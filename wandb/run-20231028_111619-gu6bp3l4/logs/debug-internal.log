@@ -1,0 +1,52 @@
+2023-10-28 11:16:24,056 INFO    StreamThr :49673 [internal.py:wandb_internal():86] W&B internal server running at pid: 49673, started at: 2023-10-28 11:16:24.056129
+2023-10-28 11:16:24,057 DEBUG   HandlerThread:49673 [handler.py:handle_request():146] handle_request: status
+2023-10-28 11:16:24,058 INFO    WriterThread:49673 [datastore.py:open_for_write():85] open: /home/shawn/Projects/LLM_ARC_Solver/wandb/run-20231028_111619-gu6bp3l4/run-gu6bp3l4.wandb
+2023-10-28 11:16:24,058 DEBUG   SenderThread:49673 [sender.py:send():380] send: header
+2023-10-28 11:16:24,058 DEBUG   SenderThread:49673 [sender.py:send():380] send: run
+2023-10-28 11:16:24,384 INFO    SenderThread:49673 [dir_watcher.py:__init__():211] watching files in: /home/shawn/Projects/LLM_ARC_Solver/wandb/run-20231028_111619-gu6bp3l4/files
+2023-10-28 11:16:24,384 INFO    SenderThread:49673 [sender.py:_start_run_threads():1122] run started: gu6bp3l4 with start time 1698506183.203296
+2023-10-28 11:16:24,388 DEBUG   HandlerThread:49673 [handler.py:handle_request():146] handle_request: check_version
+2023-10-28 11:16:24,389 DEBUG   SenderThread:49673 [sender.py:send_request():407] send_request: check_version
+2023-10-28 11:16:24,519 DEBUG   HandlerThread:49673 [handler.py:handle_request():146] handle_request: run_start
+2023-10-28 11:16:24,520 DEBUG   HandlerThread:49673 [system_info.py:__init__():32] System info init
+2023-10-28 11:16:24,520 DEBUG   HandlerThread:49673 [system_info.py:__init__():47] System info init done
+2023-10-28 11:16:24,520 INFO    HandlerThread:49673 [system_monitor.py:start():194] Starting system monitor
+2023-10-28 11:16:24,520 INFO    SystemMonitor:49673 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2023-10-28 11:16:24,521 INFO    HandlerThread:49673 [system_monitor.py:probe():214] Collecting system info
+2023-10-28 11:16:24,521 INFO    SystemMonitor:49673 [interfaces.py:start():190] Started cpu monitoring
+2023-10-28 11:16:24,521 INFO    SystemMonitor:49673 [interfaces.py:start():190] Started disk monitoring
+2023-10-28 11:16:24,521 INFO    SystemMonitor:49673 [interfaces.py:start():190] Started gpu monitoring
+2023-10-28 11:16:24,521 INFO    SystemMonitor:49673 [interfaces.py:start():190] Started memory monitoring
+2023-10-28 11:16:24,522 INFO    SystemMonitor:49673 [interfaces.py:start():190] Started network monitoring
+2023-10-28 11:16:24,526 DEBUG   HandlerThread:49673 [system_info.py:probe():196] Probing system
+2023-10-28 11:16:24,526 DEBUG   HandlerThread:49673 [gitlib.py:_init_repo():53] git repository is invalid
+2023-10-28 11:16:24,526 DEBUG   HandlerThread:49673 [system_info.py:probe():244] Probing system done
+2023-10-28 11:16:24,526 DEBUG   HandlerThread:49673 [system_monitor.py:probe():223] {'os': 'Linux-6.2.0-35-generic-x86_64-with-glibc2.35', 'python': '3.11.6', 'heartbeatAt': '2023-10-28T15:16:24.526587', 'startedAt': '2023-10-28T15:16:19.029760', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'Finetune_Llama-2-7b-chat-hf.ipynb', 'codePathLocal': None, 'host': 'shawn-AORUS-15P-YD', 'username': 'shawn', 'executable': '/home/shawn/Projects/LLM_ARC_Solver/.venv/bin/python', 'cpu_count': 8, 'cpu_count_logical': 16, 'cpu_freq': {'current': 3238.9555625, 'min': 800.0, 'max': 4600.0}, 'cpu_freq_per_core': [{'current': 2300.0, 'min': 800.0, 'max': 4600.0}, {'current': 976.283, 'min': 800.0, 'max': 4600.0}, {'current': 4305.027, 'min': 800.0, 'max': 4600.0}, {'current': 2300.0, 'min': 800.0, 'max': 4600.0}, {'current': 3089.414, 'min': 800.0, 'max': 4600.0}, {'current': 4125.846, 'min': 800.0, 'max': 4600.0}, {'current': 3748.437, 'min': 800.0, 'max': 4600.0}, {'current': 4108.834, 'min': 800.0, 'max': 4600.0}, {'current': 4128.216, 'min': 800.0, 'max': 4600.0}, {'current': 4436.083, 'min': 800.0, 'max': 4600.0}, {'current': 4077.303, 'min': 800.0, 'max': 4600.0}, {'current': 3825.633, 'min': 800.0, 'max': 4600.0}, {'current': 2300.0, 'min': 800.0, 'max': 4600.0}, {'current': 3322.505, 'min': 800.0, 'max': 4600.0}, {'current': 2300.0, 'min': 800.0, 'max': 4600.0}, {'current': 2479.708, 'min': 800.0, 'max': 4600.0}], 'disk': {'/': {'total': 691.4255523681641, 'used': 249.00770568847656}}, 'gpu': 'NVIDIA GeForce RTX 3080 Laptop GPU', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 3080 Laptop GPU', 'memory_total': 17179869184}], 'memory': {'total': 31.083847045898438}}
+2023-10-28 11:16:24,526 INFO    HandlerThread:49673 [system_monitor.py:probe():224] Finished collecting system info
+2023-10-28 11:16:24,526 INFO    HandlerThread:49673 [system_monitor.py:probe():227] Publishing system info
+2023-10-28 11:16:24,526 DEBUG   HandlerThread:49673 [system_info.py:_save_pip():52] Saving list of pip packages installed into the current environment
+2023-10-28 11:16:24,526 DEBUG   HandlerThread:49673 [system_info.py:_save_pip():68] Saving pip packages done
+2023-10-28 11:16:24,527 INFO    HandlerThread:49673 [system_monitor.py:probe():229] Finished publishing system info
+2023-10-28 11:16:24,527 DEBUG   SenderThread:49673 [sender.py:send():380] send: files
+2023-10-28 11:16:24,527 INFO    SenderThread:49673 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-10-28 11:16:24,533 DEBUG   HandlerThread:49673 [handler.py:handle_request():146] handle_request: stop_status
+2023-10-28 11:16:24,533 DEBUG   SenderThread:49673 [sender.py:send_request():407] send_request: stop_status
+2023-10-28 11:16:24,574 DEBUG   HandlerThread:49673 [handler.py:handle_request():146] handle_request: internal_messages
+2023-10-28 11:16:24,782 DEBUG   SenderThread:49673 [sender.py:send():380] send: telemetry
+2023-10-28 11:16:24,881 INFO    wandb-upload_0:49673 [upload_job.py:push():131] Uploaded file /tmp/tmpmfe3qzx3wandb/6p84bzxy-wandb-metadata.json
+2023-10-28 11:16:25,384 INFO    Thread-25 :49673 [dir_watcher.py:_on_file_created():271] file/dir created: /home/shawn/Projects/LLM_ARC_Solver/wandb/run-20231028_111619-gu6bp3l4/files/wandb-metadata.json
+2023-10-28 11:16:25,385 INFO    Thread-25 :49673 [dir_watcher.py:_on_file_created():271] file/dir created: /home/shawn/Projects/LLM_ARC_Solver/wandb/run-20231028_111619-gu6bp3l4/files/requirements.txt
+2023-10-28 11:16:29,783 DEBUG   HandlerThread:49673 [handler.py:handle_request():146] handle_request: status_report
+2023-10-28 11:16:34,784 DEBUG   HandlerThread:49673 [handler.py:handle_request():146] handle_request: status_report
+2023-10-28 11:16:39,533 DEBUG   HandlerThread:49673 [handler.py:handle_request():146] handle_request: stop_status
+2023-10-28 11:16:39,534 DEBUG   SenderThread:49673 [sender.py:send_request():407] send_request: stop_status
+2023-10-28 11:16:39,574 DEBUG   HandlerThread:49673 [handler.py:handle_request():146] handle_request: internal_messages
+2023-10-28 11:16:40,624 DEBUG   HandlerThread:49673 [handler.py:handle_request():146] handle_request: status_report
+2023-10-28 11:16:45,625 DEBUG   HandlerThread:49673 [handler.py:handle_request():146] handle_request: status_report
+2023-10-28 11:16:50,626 DEBUG   HandlerThread:49673 [handler.py:handle_request():146] handle_request: status_report
+2023-10-28 11:16:54,534 DEBUG   HandlerThread:49673 [handler.py:handle_request():146] handle_request: stop_status
+2023-10-28 11:16:54,534 DEBUG   SenderThread:49673 [sender.py:send_request():407] send_request: stop_status
+2023-10-28 11:16:54,578 DEBUG   HandlerThread:49673 [handler.py:handle_request():146] handle_request: internal_messages
+2023-10-28 11:16:56,589 DEBUG   HandlerThread:49673 [handler.py:handle_request():146] handle_request: status_report
+2023-10-28 11:16:57,393 INFO    Thread-25 :49673 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/shawn/Projects/LLM_ARC_Solver/wandb/run-20231028_111619-gu6bp3l4/files/config.yaml
+2023-10-28 11:17:01,664 DEBUG   HandlerThread:49673 [handler.py:handle_request():146] handle_request: status_report

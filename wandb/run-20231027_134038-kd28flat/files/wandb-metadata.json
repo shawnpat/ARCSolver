@@ -1,0 +1,121 @@
+{
+    "os": "Linux-6.2.0-35-generic-x86_64-with-glibc2.35",
+    "python": "3.11.6",
+    "heartbeatAt": "2023-10-27T17:40:38.555774",
+    "startedAt": "2023-10-27T17:40:38.012049",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "Finetune_Mistral7B_Instruct_v004.ipynb",
+    "codePathLocal": "Finetune_Mistral7B_Instruct_v004.ipynb",
+    "host": "shawn-AORUS-15P-YD",
+    "username": "shawn",
+    "executable": "/home/shawn/Projects/LLM_ARC_Solver/.venv/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 4133.3216875,
+        "min": 800.0,
+        "max": 4600.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 4194.714,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4142.609,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4196.493,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4199.623,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4200.036,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4202.54,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4196.58,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4192.471,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4198.252,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4187.323,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4195.737,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4194.479,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4199.775,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4197.805,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4196.552,
+            "min": 800.0,
+            "max": 4600.0
+        },
+        {
+            "current": 4199.691,
+            "min": 800.0,
+            "max": 4600.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 691.4255523681641,
+            "used": 248.79644393920898
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3080 Laptop GPU",
+            "memory_total": 17179869184
+        }
+    ],
+    "memory": {
+        "total": 31.083847045898438
+    }
+}
