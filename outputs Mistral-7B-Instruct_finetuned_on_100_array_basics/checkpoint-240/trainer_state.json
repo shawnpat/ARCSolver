@@ -1,0 +1,61 @@
+{
+  "best_metric": 0.29976654052734375,
+  "best_model_checkpoint": "outputs Mistral-7B-Instruct_finetuned_on_100_array_basics/checkpoint-240",
+  "epoch": 3.0,
+  "eval_steps": 500,
+  "global_step": 240,
+  "is_hyper_param_search": false,
+  "is_local_process_zero": true,
+  "is_world_process_zero": true,
+  "log_history": [
+    {
+      "epoch": 1.0,
+      "learning_rate": 0.000150014063818483,
+      "loss": 0.5032,
+      "step": 80
+    },
+    {
+      "epoch": 1.0,
+      "eval_loss": 0.3146001994609833,
+      "eval_runtime": 17.6039,
+      "eval_samples_per_second": 1.136,
+      "eval_steps_per_second": 0.17,
+      "step": 80
+    },
+    {
+      "epoch": 2.0,
+      "learning_rate": 0.00010000937587898864,
+      "loss": 0.3128,
+      "step": 160
+    },
+    {
+      "epoch": 2.0,
+      "eval_loss": 0.30576634407043457,
+      "eval_runtime": 18.3451,
+      "eval_samples_per_second": 1.09,
+      "eval_steps_per_second": 0.164,
+      "step": 160
+    },
+    {
+      "epoch": 3.0,
+      "learning_rate": 5.000468793949432e-05,
+      "loss": 0.3006,
+      "step": 240
+    },
+    {
+      "epoch": 3.0,
+      "eval_loss": 0.29976654052734375,
+      "eval_runtime": 18.5624,
+      "eval_samples_per_second": 1.077,
+      "eval_steps_per_second": 0.162,
+      "step": 240
+    }
+  ],
+  "logging_steps": 80,
+  "max_steps": 320,
+  "num_train_epochs": 4,
+  "save_steps": 80,
+  "total_flos": 2075584069509120.0,
+  "trial_name": null,
+  "trial_params": null
+}
