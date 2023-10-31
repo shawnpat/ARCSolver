@@ -1,0 +1,33 @@
+{
+  "best_metric": 1.3629674911499023,
+  "best_model_checkpoint": "outputs Mistral-7B-Instruct_finetuned_on_100_array_basics/checkpoint-10",
+  "epoch": 1.0,
+  "eval_steps": 500,
+  "global_step": 10,
+  "is_hyper_param_search": false,
+  "is_local_process_zero": true,
+  "is_world_process_zero": true,
+  "log_history": [
+    {
+      "epoch": 1.0,
+      "learning_rate": 0.00015011258443832878,
+      "loss": 2.0009,
+      "step": 10
+    },
+    {
+      "epoch": 1.0,
+      "eval_loss": 1.3629674911499023,
+      "eval_runtime": 5.7991,
+      "eval_samples_per_second": 3.449,
+      "eval_steps_per_second": 0.517,
+      "step": 10
+    }
+  ],
+  "logging_steps": 10,
+  "max_steps": 40,
+  "num_train_epochs": 4,
+  "save_steps": 10,
+  "total_flos": 936302897135616.0,
+  "trial_name": null,
+  "trial_params": null
+}

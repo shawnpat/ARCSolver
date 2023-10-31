@@ -211,7 +211,7 @@ The following `bitsandbytes` quantization config was used during training:
 - llm_int8_has_fp16_weight: False
 - bnb_4bit_quant_type: nf4
 - bnb_4bit_use_double_quant: True
-- bnb_4bit_compute_dtype: bfloat16
+- bnb_4bit_compute_dtype: float32
 
 ### Framework versions
 
