@@ -1,5 +1,5 @@
-merged_models/merged_001
-adapters/Finetuned_merge_001_v001
-adapters/Mistral-7B-Instruct_finetuned_on_1000_array_basics
-adapters/Mistral-7B-Instruct_finetuned_on_10000_array_basics
+merged_models
+adapters
 OLD
+data
+.venv
