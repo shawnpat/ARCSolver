@@ -1,0 +1,1547 @@
+"""
+datatype: train_part_a   pretrained_datatype: move_obj_super_easy
+len(train_dataset): 9678  ...len(valid_dataset): 214
+
+Epoch 1 of 10
+ 100.00% 605/605... rate=11.96 Hz, eta=0:00:00, total=0:00:49
+ 100.00% 14/14... rate=16.76 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 3.282577
+  Val Loss: 3.153013
+  BEST Val Loss: 3.153013
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 2 of 10
+ 100.00% 605/605... rate=11.34 Hz, eta=0:00:00, total=0:00:52
+ 100.00% 14/14... rate=15.27 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 2.645466
+  Val Loss: 3.051344
+  BEST Val Loss: 3.051344
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 3 of 10
+ 100.00% 605/605... rate=11.12 Hz, eta=0:00:00, total=0:00:53
+ 100.00% 14/14... rate=14.57 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 1.298658
+  Val Loss: 2.851808
+  BEST Val Loss: 2.851808
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 4 of 10
+ 100.00% 605/605... rate=11.08 Hz, eta=0:00:00, total=0:00:55
+ 100.00% 14/14... rate=12.93 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.864918
+  Val Loss: 2.631841
+  BEST Val Loss: 2.631841
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 5 of 10
+ 100.00% 605/605... rate=11.06 Hz, eta=0:00:00, total=0:00:55
+ 100.00% 14/14... rate=14.46 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.849314
+  Val Loss: 2.465763
+  BEST Val Loss: 2.465763
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 6 of 10
+ 100.00% 605/605... rate=10.92 Hz, eta=0:00:00, total=0:00:56
+ 100.00% 14/14... rate=14.37 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.839303
+  Val Loss: 2.333291
+  BEST Val Loss: 2.333291
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 7 of 10
+ 100.00% 605/605... rate=11.07 Hz, eta=0:00:00, total=0:00:55
+ 100.00% 14/14... rate=14.72 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.832613
+  Val Loss: 2.230483
+  BEST Val Loss: 2.230483
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 8 of 10
+ 100.00% 605/605... rate=10.99 Hz, eta=0:00:00, total=0:00:55
+ 100.00% 14/14... rate=14.89 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.828972
+  Val Loss: 2.175837
+  BEST Val Loss: 2.175837
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 9 of 10
+ 100.00% 605/605... rate=10.55 Hz, eta=0:00:00, total=0:00:57
+ 100.00% 14/14... rate=15.01 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.826789
+  Val Loss: 2.150747
+  BEST Val Loss: 2.150747
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 10 of 10
+ 100.00% 605/605... rate=10.07 Hz, eta=0:00:00, total=0:01:04
+ 100.00% 14/14... rate=13.58 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.826649
+  Val Loss: 2.146996
+  BEST Val Loss: 2.146996
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+  
+######################################################################
+unfreezing layer 5
+Epoch 1 of 10
+ 100.00% 605/605... rate=8.95 Hz, eta=0:00:00, total=0:01:02
+ 100.00% 14/14... rate=15.22 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.822897
+  Val Loss: 2.066393
+  BEST Val Loss: 2.066393
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 2 of 10
+ 100.00% 605/605... rate=8.38 Hz, eta=0:00:00, total=0:01:13
+ 100.00% 14/14... rate=13.98 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.814094
+  Val Loss: 1.792240
+  BEST Val Loss: 1.792240
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 3 of 10
+ 100.00% 605/605... rate=8.20 Hz, eta=0:00:00, total=0:01:13
+ 100.00% 14/14... rate=13.76 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.798915
+  Val Loss: 1.392525
+  BEST Val Loss: 1.392525
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 4 of 10
+ 100.00% 605/605... rate=7.82 Hz, eta=0:00:00, total=0:01:17
+ 100.00% 14/14... rate=13.18 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.785595
+  Val Loss: 1.107437
+  BEST Val Loss: 1.107437
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 5 of 10
+ 100.00% 605/605... rate=7.90 Hz, eta=0:00:00, total=0:01:16
+ 100.00% 14/14... rate=13.55 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.775730
+  Val Loss: 0.967227
+  BEST Val Loss: 0.967227
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 6 of 10
+ 100.00% 605/605... rate=7.88 Hz, eta=0:00:00, total=0:01:17
+ 100.00% 14/14... rate=13.60 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.770426
+  Val Loss: 0.909648
+  BEST Val Loss: 0.909648
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 7 of 10
+ 100.00% 605/605... rate=7.37 Hz, eta=0:00:00, total=0:01:19
+ 100.00% 14/14... rate=11.40 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.765003
+  Val Loss: 0.878872
+  BEST Val Loss: 0.878872
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 8 of 10
+ 100.00% 605/605... rate=7.42 Hz, eta=0:00:00, total=0:01:19
+ 100.00% 14/14... rate=12.83 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.761874
+  Val Loss: 0.866218
+  BEST Val Loss: 0.866218
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 9 of 10
+ 100.00% 605/605... rate=7.77 Hz, eta=0:00:00, total=0:01:19
+ 100.00% 14/14... rate=12.47 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.759902
+  Val Loss: 0.861067
+  BEST Val Loss: 0.861067
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 10 of 10
+ 100.00% 605/605... rate=7.71 Hz, eta=0:00:00, total=0:01:18
+ 100.00% 14/14... rate=12.94 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.759405
+  Val Loss: 0.860683
+  BEST Val Loss: 0.860683
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+
+###################################################################
+datatype: train_part_c   pretrained_datatype: train_part_b
+len(train_dataset): 9678  ...len(valid_dataset): 214
+unfreezing layer 4
+unfreezing layer 5
+Epoch 1 of 10
+ 100.00% 605/605... rate=5.44 Hz, eta=0:00:00, total=0:01:42
+ 100.00% 14/14... rate=11.23 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.755271
+  Val Loss: 0.848928
+  BEST Val Loss: 0.848928
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 2 of 10
+ 100.00% 605/605... rate=5.15 Hz, eta=0:00:00, total=0:01:53
+ 100.00% 14/14... rate=11.27 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.732999
+  Val Loss: 0.837534
+  BEST Val Loss: 0.837534
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 3 of 10
+ 100.00% 605/605... rate=5.12 Hz, eta=0:00:00, total=0:01:57
+ 100.00% 14/14... rate=10.87 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.657826
+  Val Loss: 0.874083
+  BEST Val Loss: 0.837534
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 4 of 10
+ 100.00% 605/605... rate=5.03 Hz, eta=0:00:00, total=0:01:58
+ 100.00% 14/14... rate=10.36 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.613562
+  Val Loss: 0.810075
+  BEST Val Loss: 0.810075
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 5 of 10
+ 100.00% 605/605... rate=5.29 Hz, eta=0:00:00, total=0:01:55
+ 100.00% 14/14... rate=11.54 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.591480
+  Val Loss: 0.737087
+  BEST Val Loss: 0.737087
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 6 of 10
+ 100.00% 605/605... rate=5.39 Hz, eta=0:00:00, total=0:01:53
+ 100.00% 14/14... rate=10.63 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.578316
+  Val Loss: 0.731671
+  BEST Val Loss: 0.731671
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 7 of 10
+ 100.00% 605/605... rate=5.42 Hz, eta=0:00:00, total=0:01:51
+ 100.00% 14/14... rate=10.93 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.569773
+  Val Loss: 0.703580
+  BEST Val Loss: 0.703580
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 8 of 10
+ 100.00% 605/605... rate=5.42 Hz, eta=0:00:00, total=0:01:51
+ 100.00% 14/14... rate=11.43 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.562943
+  Val Loss: 0.700180
+  BEST Val Loss: 0.700180
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 9 of 10
+ 100.00% 605/605... rate=5.40 Hz, eta=0:00:00, total=0:01:51
+ 100.00% 14/14... rate=11.34 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.559607
+  Val Loss: 0.696081
+  BEST Val Loss: 0.696081
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 10 of 10
+ 100.00% 605/605... rate=6.26 Hz, eta=0:00:00, total=0:01:41
+ 100.00% 14/14... rate=12.68 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.559084
+  Val Loss: 0.695396
+  BEST Val Loss: 0.695396
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+
+###################################################################
+datatype: train_part_d   pretrained_datatype: train_part_c
+len(train_dataset): 9678  ...len(valid_dataset): 214
+unfreezing layer 3
+unfreezing layer 4
+unfreezing layer 5
+Epoch 1 of 10
+ 100.00% 605/605... rate=4.73 Hz, eta=0:00:00, total=0:01:59
+ 100.00% 14/14... rate=11.38 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.543008
+  Val Loss: 0.692256
+  BEST Val Loss: 0.692256
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 2 of 10
+ 100.00% 605/605... rate=4.63 Hz, eta=0:00:00, total=0:02:10
+ 100.00% 14/14... rate=10.77 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.473752
+  Val Loss: 0.723697
+  BEST Val Loss: 0.692256
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 3 of 10
+ 100.00% 605/605... rate=4.55 Hz, eta=0:00:00, total=0:02:12
+ 100.00% 14/14... rate=11.50 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.409781
+  Val Loss: 0.728925
+  BEST Val Loss: 0.692256
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 4 of 10
+ 100.00% 605/605... rate=4.45 Hz, eta=0:00:00, total=0:02:14
+ 100.00% 14/14... rate=10.36 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.376478
+  Val Loss: 0.679964
+  BEST Val Loss: 0.679964
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 5 of 10
+ 100.00% 605/605... rate=4.64 Hz, eta=0:00:00, total=0:02:12
+ 100.00% 14/14... rate=11.23 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.358312
+  Val Loss: 0.611588
+  BEST Val Loss: 0.611588
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 6 of 10
+ 100.00% 605/605... rate=4.63 Hz, eta=0:00:00, total=0:02:10
+ 100.00% 14/14... rate=10.89 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.345226
+  Val Loss: 0.609236
+  BEST Val Loss: 0.609236
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 7 of 10
+ 100.00% 605/605... rate=4.57 Hz, eta=0:00:00, total=0:02:11
+ 100.00% 14/14... rate=11.24 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.336896
+  Val Loss: 0.606309
+  BEST Val Loss: 0.606309
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 8 of 10
+ 100.00% 605/605... rate=4.55 Hz, eta=0:00:00, total=0:02:11
+ 100.00% 14/14... rate=11.20 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.331368
+  Val Loss: 0.609122
+  BEST Val Loss: 0.606309
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 9 of 10
+ 100.00% 605/605... rate=4.61 Hz, eta=0:00:00, total=0:02:11
+ 100.00% 14/14... rate=11.05 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.328094
+  Val Loss: 0.597437
+  BEST Val Loss: 0.597437
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 10 of 10
+ 100.00% 605/605... rate=4.63 Hz, eta=0:00:00, total=0:02:10
+ 100.00% 14/14... rate=10.93 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.326520
+  Val Loss: 0.596779
+  BEST Val Loss: 0.596779
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+
+################################################################
+datatype: train_part_e   pretrained_datatype: train_part_d
+len(train_dataset): 9678  ...len(valid_dataset): 214
+unfreezing layer 2
+unfreezing layer 3
+unfreezing layer 4
+unfreezing layer 5
+Epoch 1 of 10
+ 100.00% 605/605... rate=4.22 Hz, eta=0:00:00, total=0:02:21
+ 100.00% 14/14... rate=10.95 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.319296
+  Val Loss: 0.607775
+  BEST Val Loss: 0.607775
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 2 of 10
+ 100.00% 605/605... rate=4.64 Hz, eta=0:00:00, total=0:02:13
+ 100.00% 14/14... rate=12.56 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.304526
+  Val Loss: 0.583802
+  BEST Val Loss: 0.583802
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 3 of 10
+ 100.00% 605/605... rate=4.63 Hz, eta=0:00:00, total=0:02:10
+ 100.00% 14/14... rate=13.16 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.286977
+  Val Loss: 0.599521
+  BEST Val Loss: 0.583802
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 4 of 10
+ 100.00% 605/605... rate=4.64 Hz, eta=0:00:00, total=0:02:10
+ 100.00% 14/14... rate=13.08 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.271431
+  Val Loss: 0.573731
+  BEST Val Loss: 0.573731
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 5 of 10
+ 100.00% 605/605... rate=4.66 Hz, eta=0:00:00, total=0:02:09
+ 100.00% 14/14... rate=13.18 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.260225
+  Val Loss: 0.552366
+  BEST Val Loss: 0.552366
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 6 of 10
+ 100.00% 605/605... rate=4.70 Hz, eta=0:00:00, total=0:02:11
+ 100.00% 14/14... rate=12.36 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.251565
+  Val Loss: 0.574980
+  BEST Val Loss: 0.552366
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 7 of 10
+ 100.00% 605/605... rate=4.69 Hz, eta=0:00:00, total=0:02:08
+ 100.00% 14/14... rate=13.31 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.245422
+  Val Loss: 0.558556
+  BEST Val Loss: 0.552366
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 8 of 10
+ 100.00% 605/605... rate=4.69 Hz, eta=0:00:00, total=0:02:08
+ 100.00% 14/14... rate=13.52 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.240270
+  Val Loss: 0.575736
+  BEST Val Loss: 0.552366
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 9 of 10
+ 100.00% 605/605... rate=4.74 Hz, eta=0:00:00, total=0:02:07
+ 100.00% 14/14... rate=12.78 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.237407
+  Val Loss: 0.576722
+  BEST Val Loss: 0.552366
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 10 of 10
+ 100.00% 605/605... rate=4.74 Hz, eta=0:00:00, total=0:02:07
+ 100.00% 14/14... rate=13.72 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.236068
+  Val Loss: 0.578005
+  BEST Val Loss: 0.552366
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+  
+##################################################################
+datatype: train_part_f   pretrained_datatype: train_part_e
+len(train_dataset): 9678  ...len(valid_dataset): 214
+unfreezing layer 1
+unfreezing layer 2
+unfreezing layer 3
+unfreezing layer 4
+unfreezing layer 5
+Epoch 1 of 10
+ 100.00% 605/605... rate=3.60 Hz, eta=0:00:00, total=0:02:38
+ 100.00% 14/14... rate=10.91 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.249943
+  Val Loss: 0.557260
+  BEST Val Loss: 0.557260
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 2 of 10
+ 100.00% 605/605... rate=3.54 Hz, eta=0:00:00, total=0:02:51
+ 100.00% 14/14... rate=10.85 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.244488
+  Val Loss: 0.557508
+  BEST Val Loss: 0.557260
+  Train Accuracy: 0.00%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 3 of 10
+ 100.00% 605/605... rate=3.48 Hz, eta=0:00:00, total=0:02:51
+ 100.00% 14/14... rate=10.59 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.230294
+  Val Loss: 0.581923
+  BEST Val Loss: 0.557260
+  Train Accuracy: 0.01%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 4 of 10
+ 100.00% 605/605... rate=3.48 Hz, eta=0:00:00, total=0:02:53
+ 100.00% 14/14... rate=10.79 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.208833
+  Val Loss: 0.577936
+  BEST Val Loss: 0.557260
+  Train Accuracy: 0.01%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 5 of 10
+ 100.00% 605/605... rate=3.51 Hz, eta=0:00:00, total=0:02:52
+ 100.00% 14/14... rate=10.64 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.186445
+  Val Loss: 0.635743
+  BEST Val Loss: 0.557260
+  Train Accuracy: 0.01%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 6 of 10
+ 100.00% 605/605... rate=3.59 Hz, eta=0:00:00, total=0:02:49
+ 100.00% 14/14... rate=10.48 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.167880
+  Val Loss: 0.639313
+  BEST Val Loss: 0.557260
+  Train Accuracy: 0.01%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 7 of 10
+ 100.00% 605/605... rate=3.47 Hz, eta=0:00:00, total=0:02:54
+ 100.00% 14/14... rate=10.69 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.155118
+  Val Loss: 0.594588
+  BEST Val Loss: 0.557260
+  Train Accuracy: 0.01%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 8 of 10
+ 100.00% 605/605... rate=3.53 Hz, eta=0:00:00, total=0:02:54
+ 100.00% 14/14... rate=11.22 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.147714
+  Val Loss: 0.606672
+  BEST Val Loss: 0.557260
+  Train Accuracy: 0.03%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 9 of 10
+ 100.00% 605/605... rate=3.88 Hz, eta=0:00:00, total=0:02:39
+ 100.00% 14/14... rate=12.46 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.144006
+  Val Loss: 0.620688
+  BEST Val Loss: 0.557260
+  Train Accuracy: 0.04%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 10 of 10
+ 100.00% 605/605... rate=3.95 Hz, eta=0:00:00, total=0:02:35
+ 100.00% 14/14... rate=12.20 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.142826
+  Val Loss: 0.621809
+  BEST Val Loss: 0.557260
+  Train Accuracy: 0.03%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+  
+###################################################################
+datatype: train_all   pretrained_datatype: train_part_f
+len(train_dataset): 113561  ...len(valid_dataset): 214
+Epoch 1 of 100
+ 100.00% 7098/7098... rate=4.20 Hz, eta=0:00:00, total=0:28:52
+ 100.00% 14/14... rate=14.38 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.252282
+  Val Loss: 0.381296
+  BEST Val Loss: 0.381296
+  Train Accuracy: 0.02%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 2 of 100
+ 100.00% 7098/7098... rate=4.38 Hz, eta=0:00:00, total=0:27:29
+ 100.00% 14/14... rate=14.19 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.226129
+  Val Loss: 0.368834
+  BEST Val Loss: 0.368834
+  Train Accuracy: 0.02%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 3 of 100
+ 100.00% 7098/7098... rate=4.39 Hz, eta=0:00:00, total=0:27:01
+ 100.00% 14/14... rate=14.17 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.208758
+  Val Loss: 0.366478
+  BEST Val Loss: 0.366478
+  Train Accuracy: 0.03%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 4 of 100
+ 100.00% 7098/7098... rate=4.42 Hz, eta=0:00:00, total=0:26:57
+ 100.00% 14/14... rate=14.40 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.192185
+  Val Loss: 0.354787
+  BEST Val Loss: 0.354787
+  Train Accuracy: 0.04%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 5 of 100
+ 100.00% 7098/7098... rate=4.45 Hz, eta=0:00:00, total=0:26:40
+ 100.00% 14/14... rate=14.25 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.173232
+  Val Loss: 0.333850
+  BEST Val Loss: 0.333850
+  Train Accuracy: 0.05%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 6 of 100
+ 100.00% 7098/7098... rate=4.52 Hz, eta=0:00:00, total=0:26:22
+ 100.00% 14/14... rate=14.48 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.152273
+  Val Loss: 0.293357
+  BEST Val Loss: 0.293357
+  Train Accuracy: 0.06%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 7 of 100
+ 100.00% 7098/7098... rate=4.56 Hz, eta=0:00:00, total=0:26:00
+ 100.00% 14/14... rate=14.42 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.133726
+  Val Loss: 0.265762
+  BEST Val Loss: 0.265762
+  Train Accuracy: 0.10%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 8 of 100
+ 100.00% 7098/7098... rate=4.64 Hz, eta=0:00:00, total=0:25:42
+ 100.00% 14/14... rate=14.76 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.123319
+  Val Loss: 0.257784
+  BEST Val Loss: 0.257784
+  Train Accuracy: 0.16%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 9 of 100
+ 100.00% 7098/7098... rate=4.66 Hz, eta=0:00:00, total=0:25:32
+ 100.00% 14/14... rate=14.75 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.116914
+  Val Loss: 0.244951
+  BEST Val Loss: 0.244951
+  Train Accuracy: 0.20%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 10 of 100
+ 100.00% 7098/7098... rate=4.68 Hz, eta=0:00:00, total=0:25:20
+ 100.00% 14/14... rate=14.58 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.111883
+  Val Loss: 0.244468
+  BEST Val Loss: 0.244468
+  Train Accuracy: 0.26%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 11 of 100
+ 100.00% 7098/7098... rate=4.71 Hz, eta=0:00:00, total=0:25:12
+ 100.00% 14/14... rate=15.12 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.107567
+  Val Loss: 0.254327
+  BEST Val Loss: 0.244468
+  Train Accuracy: 0.30%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 12 of 100
+ 100.00% 7098/7098... rate=4.71 Hz, eta=0:00:00, total=0:25:07
+ 100.00% 14/14... rate=15.69 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.103732
+  Val Loss: 0.254322
+  BEST Val Loss: 0.244468
+  Train Accuracy: 0.35%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 13 of 100
+ 100.00% 7098/7098... rate=4.65 Hz, eta=0:00:00, total=0:25:20
+ 100.00% 14/14... rate=14.89 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.100225
+  Val Loss: 0.252679
+  BEST Val Loss: 0.244468
+  Train Accuracy: 0.37%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 14 of 100
+ 100.00% 7098/7098... rate=4.56 Hz, eta=0:00:00, total=0:25:47
+ 100.00% 14/14... rate=14.63 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.096827
+  Val Loss: 0.260073
+  BEST Val Loss: 0.244468
+  Train Accuracy: 0.43%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 15 of 100
+ 100.00% 7098/7098... rate=4.53 Hz, eta=0:00:00, total=0:26:06
+ 100.00% 14/14... rate=13.91 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.093537
+  Val Loss: 0.263095
+  BEST Val Loss: 0.244468
+  Train Accuracy: 0.42%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 16 of 100
+ 100.00% 7098/7098... rate=4.51 Hz, eta=0:00:00, total=0:26:11
+ 100.00% 14/14... rate=14.36 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.090388
+  Val Loss: 0.251619
+  BEST Val Loss: 0.244468
+  Train Accuracy: 0.47%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.00%
+Epoch 17 of 100
+ 100.00% 7098/7098... rate=4.55 Hz, eta=0:00:00, total=0:26:20
+ 100.00% 14/14... rate=14.15 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.087415
+  Val Loss: 0.263907
+  BEST Val Loss: 0.244468
+  Train Accuracy: 0.50%
+  Val Accuracy: 0.47%
+  BEST Val Accuracy: 0.47%
+Epoch 18 of 100
+ 100.00% 7098/7098... rate=4.50 Hz, eta=0:00:00, total=0:26:20
+ 100.00% 14/14... rate=14.50 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.084470
+  Val Loss: 0.261921
+  BEST Val Loss: 0.244468
+  Train Accuracy: 0.53%
+  Val Accuracy: 0.47%
+  BEST Val Accuracy: 0.47%
+Epoch 19 of 100
+ 100.00% 7098/7098... rate=4.52 Hz, eta=0:00:00, total=0:26:23
+ 100.00% 14/14... rate=14.64 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.081730
+  Val Loss: 0.258058
+  BEST Val Loss: 0.244468
+  Train Accuracy: 0.61%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.47%
+Epoch 20 of 100
+ 100.00% 7098/7098... rate=4.50 Hz, eta=0:00:00, total=0:26:13
+ 100.00% 14/14... rate=13.85 Hz, eta=0:00:00, total=0:00:01
+  Train Loss: 0.079026
+  Val Loss: 0.268546
+  BEST Val Loss: 0.244468
+  Train Accuracy: 0.68%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.47%
+Epoch 21 of 100
+ 100.00% 7098/7098... rate=4.47 Hz, eta=0:00:00, total=0:26:25
+ 100.00% 14/14... rate=14.32 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.076427
+  Val Loss: 0.267806
+  BEST Val Loss: 0.244468
+  Train Accuracy: 0.79%
+  Val Accuracy: 0.47%
+  BEST Val Accuracy: 0.47%
+Epoch 22 of 100
+ 100.00% 7098/7098... rate=4.48 Hz, eta=0:00:00, total=0:26:26
+ 100.00% 14/14... rate=14.47 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.073982
+  Val Loss: 0.285139
+  BEST Val Loss: 0.244468
+  Train Accuracy: 0.88%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.47%
+Epoch 23 of 100
+ 100.00% 7098/7098... rate=4.48 Hz, eta=0:00:00, total=0:26:26
+ 100.00% 14/14... rate=14.30 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.071780
+  Val Loss: 0.290265
+  BEST Val Loss: 0.244468
+  Train Accuracy: 1.01%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.47%
+Epoch 24 of 100
+ 100.00% 7098/7098... rate=4.48 Hz, eta=0:00:00, total=0:26:27
+ 100.00% 14/14... rate=14.34 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.069562
+  Val Loss: 0.292692
+  BEST Val Loss: 0.244468
+  Train Accuracy: 1.11%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.47%
+Epoch 25 of 100
+ 100.00% 7098/7098... rate=4.50 Hz, eta=0:00:00, total=0:26:20
+ 100.00% 14/14... rate=14.40 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.067568
+  Val Loss: 0.300503
+  BEST Val Loss: 0.244468
+  Train Accuracy: 1.29%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.47%
+Epoch 26 of 100
+ 100.00% 7098/7098... rate=4.44 Hz, eta=0:00:00, total=0:26:28
+ 100.00% 14/14... rate=14.52 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.065624
+  Val Loss: 0.300021
+  BEST Val Loss: 0.244468
+  Train Accuracy: 1.42%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.47%
+Epoch 27 of 100
+ 100.00% 7098/7098... rate=4.49 Hz, eta=0:00:00, total=0:26:20
+ 100.00% 14/14... rate=14.59 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.063732
+  Val Loss: 0.300101
+  BEST Val Loss: 0.244468
+  Train Accuracy: 1.55%
+  Val Accuracy: 0.47%
+  BEST Val Accuracy: 0.47%
+Epoch 28 of 100
+ 100.00% 7098/7098... rate=4.51 Hz, eta=0:00:00, total=0:26:18
+ 100.00% 14/14... rate=14.46 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.061894
+  Val Loss: 0.325067
+  BEST Val Loss: 0.244468
+  Train Accuracy: 1.66%
+  Val Accuracy: 0.47%
+  BEST Val Accuracy: 0.47%
+Epoch 29 of 100
+ 100.00% 7098/7098... rate=4.55 Hz, eta=0:00:00, total=0:26:10
+ 100.00% 14/14... rate=14.72 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.059973
+  Val Loss: 0.320459
+  BEST Val Loss: 0.244468
+  Train Accuracy: 1.86%
+  Val Accuracy: 0.47%
+  BEST Val Accuracy: 0.47%
+Epoch 30 of 100
+ 100.00% 7098/7098... rate=4.48 Hz, eta=0:00:00, total=0:26:16
+ 100.00% 14/14... rate=14.37 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.058248
+  Val Loss: 0.323250
+  BEST Val Loss: 0.244468
+  Train Accuracy: 1.99%
+  Val Accuracy: 0.47%
+  BEST Val Accuracy: 0.47%
+Epoch 31 of 100
+ 100.00% 7098/7098... rate=3.91 Hz, eta=0:00:00, total=0:26:44
+ 100.00% 14/14... rate=14.00 Hz, eta=0:00:00, total=0:00:00
+  Train Loss: 0.056466
+  Val Loss: 0.330167
+  BEST Val Loss: 0.244468
+  Train Accuracy: 2.18%
+  Val Accuracy: 0.00%
+  BEST Val Accuracy: 0.47%
+"""
+
+import numpy as np
+from progiter import ProgIter
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torch.utils.data import DataLoader, Dataset, ConcatDataset, random_split
+import os
+import json
+import math
+import copy
+from typing import Optional, Any, Union, Callable
+from torch import Tensor
+from torch.nn.modules.module import Module
+from torch.nn.modules.activation import MultiheadAttention
+from torch.nn.modules.container import ModuleList
+from torch.nn.init import xavier_uniform_
+from torch.nn.modules.dropout import Dropout
+from torch.nn.modules.linear import Linear
+from torch.nn.modules.normalization import LayerNorm
+from torch.nn.modules.conv import Conv1d
+import shutil
+
+
+np.random.seed(0)
+torch.manual_seed(0)
+torch.backends.cudnn.deterministic = True
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print(
+    "Using device:",
+    device,
+    f"({torch.cuda.get_device_name(device)})" if torch.cuda.is_available() else "",
+)
+
+
+class JsonDataset(Dataset):
+    def __init__(
+        self,
+        root_dir,
+        verbose=False,
+        print_filenames=False,
+        n_colors=11,
+        max_num_train_puzzles=10,
+        max_num_test_puzzles=3,
+        max_grid_size=30,
+    ):
+        self.root_dir = root_dir
+        self.verbose = verbose
+        self.print_filenames = print_filenames
+        self.n_colors = n_colors
+        self.max_num_train_puzzles = max_num_train_puzzles
+        self.max_num_test_puzzles = max_num_test_puzzles
+        self.max_grid_size = max_grid_size
+        self.file_list = []
+
+        for root, dirs, files in os.walk(self.root_dir):
+            for name in files:
+                file_path = os.path.join(root, name)
+
+                with open(file_path, "r") as f:
+                    data = json.load(f)
+                train_tasks = data["train"]
+                test_tasks = data["test"]
+                if (
+                    len(train_tasks) <= self.max_num_train_puzzles
+                    and len(test_tasks) <= self.max_num_test_puzzles
+                ):
+                    self.file_list.append(file_path)
+
+    def __len__(self):
+        return len(self.file_list)
+
+    def __getitem__(self, idx):
+        file_path = self.file_list[idx]
+
+        if self.print_filenames:
+            print(file_path)
+
+        with open(file_path, "r") as f:
+            data = json.load(f)
+
+        train_tasks = data["train"]
+        test_tasks = data["test"]
+
+        # print("\n\nlen(train_tasks)", len(train_tasks))
+        # print("len(test_tasks)", len(test_tasks))
+
+        dummy_grid = torch.full([self.max_grid_size, self.max_grid_size], 10, dtype=int)
+
+        # one-hot padded channels: (::11, :, :),
+        for i, train_task in enumerate(train_tasks):
+            input = np.array(train_task["input"])
+
+            if self.verbose:
+                print(file_path, "train_task input", i)
+                print(input)
+
+            orig_input_tensor = torch.tensor(input)
+            input_tensor = dummy_grid.clone().detach()
+            input_tensor[
+                : orig_input_tensor.shape[0], : orig_input_tensor.shape[1]
+            ] = orig_input_tensor
+            input_tensor = input_tensor.unsqueeze(0)
+
+            output = np.array(train_task["output"])
+            if self.verbose:
+                print(file_path, "train_task output", i)
+                print(output)
+
+            orig_output_tensor = torch.tensor(output)
+            output_tensor = dummy_grid.clone().detach()
+            output_tensor[
+                : orig_output_tensor.shape[0], : orig_output_tensor.shape[1]
+            ] = orig_output_tensor
+            output_tensor = output_tensor.unsqueeze(0)
+
+            if i == 0:
+                model_input = torch.cat((input_tensor, output_tensor))
+            else:
+                model_input = torch.cat((model_input, input_tensor))
+                model_input = torch.cat((model_input, output_tensor))
+
+        # print("\n\nmodel_input.shape", model_input.shape)
+
+        for i, test_task in enumerate(test_tasks):
+            input = np.array(test_task["input"])
+            if self.verbose:
+                print(file_path, "test_task input", i)
+                print(input)
+
+            orig_input_tensor = torch.tensor(input)
+            input_tensor = dummy_grid.clone().detach()
+            input_tensor[
+                : orig_input_tensor.shape[0], : orig_input_tensor.shape[1]
+            ] = orig_input_tensor
+            input_tensor = input_tensor.unsqueeze(0)
+
+            output = np.array(test_task["output"])
+            if self.verbose:
+                print(file_path, "test_task output", i)
+                print(output)
+
+            orig_output_tensor = torch.tensor(output)
+            output_tensor = dummy_grid.clone().detach()
+            output_tensor[
+                : orig_output_tensor.shape[0], : orig_output_tensor.shape[1]
+            ] = orig_output_tensor
+            one_hot_output_tensor = F.one_hot(output_tensor, num_classes=self.n_colors)
+            one_hot_output_tensor_permuted = torch.permute(
+                one_hot_output_tensor, (2, 0, 1)
+            )
+
+            model_input = torch.cat((model_input, input_tensor))
+            if i == 0:
+                model_output = one_hot_output_tensor_permuted
+            else:
+                model_output = torch.cat((model_output, one_hot_output_tensor_permuted))
+
+        max_model_output_shape_0 = self.max_num_test_puzzles
+        while model_output.shape[0] < max_model_output_shape_0:
+            dummy_input = dummy_grid.clone().detach()
+            dummy_input = dummy_input.unsqueeze(0)
+            model_input = torch.cat((model_input, dummy_input))
+
+            dummy_output = dummy_grid.clone().detach()
+            one_hot_output_tensor = F.one_hot(dummy_output, num_classes=self.n_colors)
+            one_hot_output_tensor_permuted = torch.permute(
+                one_hot_output_tensor, (2, 0, 1)
+            )
+            model_output = torch.cat((model_output, one_hot_output_tensor_permuted))
+
+        max_model_input_shape_0 = (
+            2 * self.max_num_train_puzzles
+        ) + self.max_num_test_puzzles
+        while model_input.shape[0] < max_model_input_shape_0:
+            dummy_input = dummy_grid.clone().detach()
+            dummy_input = dummy_input.unsqueeze(0)
+
+            model_input = torch.cat((model_input, dummy_input))
+
+            dummy_output = dummy_grid.clone().detach()
+            dummy_output = dummy_output.unsqueeze(0)
+            model_input = torch.cat((model_input, dummy_output))
+
+        # print(
+        #     "model_input.shape",
+        #     model_input.shape,
+        #     "   model_output.shape",
+        #     model_output.shape,
+        # )
+        return model_input.long(), model_output.long(), file_path
+
+
+class PositionalEncoding(nn.Module):
+    def __init__(self, n_channels_in=130, grid_length_squared=64, device=device):
+        super(PositionalEncoding, self).__init__()
+
+        pe = torch.zeros(grid_length_squared, n_channels_in)
+        position = torch.arange(0, grid_length_squared, dtype=torch.float).unsqueeze(1)
+        div_term = torch.exp(
+            torch.arange(0, n_channels_in, 2).float()
+            * -(math.log(10000.0) / n_channels_in)
+        )
+
+        pe[:, 0::2] = torch.sin(position * div_term)
+        if n_channels_in % 2 == 0:
+            pe[:, 1::2] = torch.cos(position * div_term)
+
+        pe = pe.unsqueeze(1)
+
+        self.register_buffer("pe", pe.to(device))
+
+    def forward(self, x):
+        # print("\n\nx.shape", x.shape)
+        xblah = self.pe[: x.size(0), :]
+        # print("xblah.shape", xblah.shape)
+        x = x + self.pe[: x.size(0), :]
+        return x
+
+
+class Net(nn.Module):
+    def __init__(
+        self,
+        n_channels_in=13,
+        n_channels_out=11,
+        nhead=5,
+        num_layers=5,
+        dropout=0.1,
+        grid_dim=30,
+        n_colors=11,
+        embedding_dim=10,
+    ):
+        super(Net, self).__init__()
+        self.n_channels_in = n_channels_in
+        self.n_channels_out = n_channels_out
+        self.embedding_dim = embedding_dim
+        self.n_colors = n_colors
+        self.d_model = self.n_channels_in * self.embedding_dim
+        self.grid_dim = grid_dim
+
+        self.embedding = nn.Embedding(self.n_colors, self.embedding_dim).to(device)
+
+        self.conv1 = nn.Conv2d(self.d_model, self.d_model, kernel_size=1)
+
+        self.pos_encoder = PositionalEncoding(
+            n_channels_in=self.d_model,
+            grid_length_squared=self.grid_dim * self.grid_dim,
+            device=device,
+        ).to(device)
+
+        self.encoder_layer = nn.TransformerEncoderLayer(
+            d_model=self.d_model, nhead=nhead, dropout=dropout, batch_first=True
+        )
+
+        self.transformer_encoder = nn.TransformerEncoder(
+            self.encoder_layer, num_layers=num_layers
+        )
+
+        self.decoder = nn.Conv2d(self.d_model, self.n_channels_out, kernel_size=1)
+        self.init_weights()
+
+    def init_weights(self):
+        initrange = 0.1
+        self.decoder.bias.data.zero_()
+        self.decoder.weight.data.uniform_(-initrange, initrange)
+
+    def forward(self, x, print_shapes=False):  # in: (b, c, g, g)
+        if print_shapes:
+            print("\n\n1 x.shape", x.shape)
+
+        x = self.embedding(x)  # (b, c, g, g, e)
+        if print_shapes:
+            print("2 x.shape out of embedding", x.shape)
+
+        x = x.permute(0, 1, 4, 2, 3)  # (b, c, e, g, g)
+        if print_shapes:
+            print("3 x.shape", x.shape)
+
+        x = x.flatten(1, 2)  # (b, c*e, g, g)
+        if print_shapes:
+            print("4 x.shape", x.shape)
+
+        x = self.conv1(x)  # (b, c*e, g, g) --> (b, c*e, g, g)
+        if print_shapes:
+            print("5 x.shape out of conv1", x.shape)
+
+        x = x.flatten(2)  # (b, c*e, g, g) --> (b, c*e, g*g)
+        if print_shapes:
+            print("6 x.shape flattened", x.shape)
+
+        x = x.permute(2, 0, 1)  # (b, c*e, g*g) --> (g*g, b, c*e)
+        if print_shapes:
+            print("7 x.shape into pos_encoder", x.shape)
+
+        x = self.pos_encoder(x)  # (g*g, b, c*e)
+        if print_shapes:
+            print("8 x.shape out of pos encoder", x.shape)
+
+        x = x.permute(1, 0, 2)  # (g*g, b, c*e) --> (b, g*g, c*e)
+        if print_shapes:
+            print("9 x.shape into transformer_encoder", x.shape)
+
+        x = self.transformer_encoder(x)  # (b, g*g, c*e)
+        if print_shapes:
+            print("10 x.shape out of transformer_encoder", x.shape)
+
+        x = x.permute(0, 2, 1)  # (b, g*g, c*e) --> (b, c*e, g*g)
+        if print_shapes:
+            print("11 x.shape", x.shape)
+
+        x = x.unsqueeze(3)  # (b, c*e, g*g) --> (b, c*e, 1, g*g)
+        if print_shapes:
+            print("12 x.shape", x.shape)
+
+        x = x.reshape(
+            -1, self.d_model, self.grid_dim, self.grid_dim
+        )  # (b, c*e, 1, g*g) --> (b, c*e, g, g)
+        if print_shapes:
+            print("13 x.shape", x.shape)
+
+        x = self.decoder(x)  # (b, c*e, g, g) --> (b, c, g, g)
+        if print_shapes:
+            print("14 x.shape", x.shape)
+
+        return x
+
+
+def train(
+    model, dataset_len, dataloader, device, optimizer, scheduler, criterion, testing
+):
+    model.train()
+    train_loss = 0.0
+    correct = 0.0
+    total = 0.0
+    for batch in ProgIter(dataloader):
+        batch_correct = 0.0
+        batch_total = len(batch[1])
+        total += batch_total
+
+        if testing:
+            break
+
+        x, y, file_path = batch
+        x, y = x.to(device), y.to(device)
+        y_hat = model(x)
+
+        # Convert tensors to float data type
+        y_hat = y_hat.float()
+        y = y.float()
+
+        # print("y_hat.shape", y_hat.shape)
+        # print("y.shape", y.shape)
+
+        for pred, targ in zip(y_hat, y):
+            # print("pred.shape", pred.shape)
+            # print("targ.shape", targ.shape, "\n")
+            predicted = torch.argmax(pred, dim=0)
+            target = torch.argmax(targ, dim=0)
+            is_equal = torch.equal(target, predicted)
+            if is_equal:
+                batch_correct += 1
+                correct += 1.0
+
+        # batch_accuracy = batch_correct / batch_total
+        # if batch_accuracy <= 0.0:
+        #     batch_accuracy = 0.000001
+
+        loss = criterion(y_hat, y)  # / batch_accuracy
+
+        # # L1 regularization
+        # lambda_l1 = 0.1
+        # l1_reg = torch.tensor(0.0).to(device)
+        # for param in model.parameters():
+        #     l1_reg += torch.norm(param, 1).to(device)
+        # # loss += lambda_l1 * l1_reg.item()
+        # loss += lambda_l1 * l1_reg
+
+        # # L2 regularization
+        # lambda_l2 = 0.1
+        # l2_reg = torch.tensor(0.0).to(device)
+        # for param in model.parameters():
+        #     l2_reg += torch.norm(param, 2).to(device)
+        # # loss += lambda_l2 * l2_reg.item()
+        # loss += lambda_l2 * l2_reg
+
+        train_loss += loss.detach().cpu().item() * (batch_total / dataset_len)
+
+        optimizer.zero_grad()
+        loss.backward()
+
+        # Clip gradients
+        clip_value = 5.0  # This is a common starting point
+        torch.nn.utils.clip_grad_norm_(model.parameters(), clip_value)
+
+        optimizer.step()
+        scheduler.step()
+
+    accuracy = correct / total
+    return train_loss, accuracy
+
+
+def validate(model, dataset_len, dataloader, device, criterion, testing):
+    model.eval()
+    valid_loss = 0.0
+    correct = 0.0
+    total = 0.0
+    with torch.no_grad():
+        for batch in ProgIter(dataloader):
+            batch_correct = 0.0
+            batch_total = len(batch[1])
+            total += batch_total
+
+            if testing:
+                break
+
+            x, y, file_path = batch
+            x, y = x.to(device), y.to(device)
+            y_hat = model(x)
+
+            # Convert tensors to float data type
+            y_hat = y_hat.float()
+            y = y.float()
+
+            for pred, targ in zip(y_hat, y):
+                predicted = torch.argmax(pred, dim=0)
+                target = torch.argmax(targ, dim=0)
+                is_equal = torch.equal(target, predicted)
+                if is_equal:
+                    batch_correct += 1
+                    correct += 1.0
+
+            # batch_accuracy = batch_correct / batch_total
+            # if batch_accuracy <= 0.0:
+            #     batch_accuracy = 0.000001
+
+            loss = criterion(y_hat, y)  # / batch_accuracy
+
+            valid_loss += loss.detach().cpu().item() * (batch_total / dataset_len)
+
+    accuracy = correct / total
+    return valid_loss, accuracy
+
+
+def main():
+    torch.cuda.empty_cache()
+
+    # pretrained_model_version = "301"
+    pretrained_model_version = "400"
+    new_model_version = "400"
+
+    # pretrained_datatype = "move_obj_super_easy"
+    # datatype = "train_part_a"
+    # pretrained_datatype = "train_part_a"
+    # datatype = "train_part_b"
+    # pretrained_datatype = "train_part_b"
+    # datatype = "train_part_c"
+    # pretrained_datatype = "train_part_c"
+    # datatype = "train_part_d"
+    # pretrained_datatype = "train_part_d"
+    # datatype = "train_part_e"
+    # pretrained_datatype = "train_part_e"
+    # datatype = "train_part_f"
+    pretrained_datatype = "train_part_f"
+    datatype = "train_all"
+
+    testing = False
+    continue_training = True
+    continue_from_prev_epoch = False
+
+    n_colors = 11
+    max_num_train_puzzles = 3
+    max_num_test_puzzles = 1
+    max_grid_dim = 30
+    n_channels_in = (2 * max_num_train_puzzles) + max_num_test_puzzles
+    n_channels_out = n_colors * max_num_test_puzzles
+    embedding_dim = 18
+    nhead = 6
+    dropout = 0.2
+    lr = 0.0001
+    batch_size = 16
+    epochs = 100
+    use_partial_size = False
+    partial_dataset_fraction = 0.0
+
+    pretrained_model_path = (
+        "models/ARC_" + pretrained_datatype + "_" + pretrained_model_version
+    )
+
+    new_model_path = "models/ARC_" + datatype + "_" + new_model_version
+
+    model = Net(
+        n_channels_in=n_channels_in,
+        n_channels_out=n_channels_out,
+        nhead=nhead,
+        num_layers=5,
+        dropout=dropout,
+        grid_dim=max_grid_dim,
+        n_colors=n_colors,
+        embedding_dim=embedding_dim,
+    ).to(device)
+
+    criterion = nn.CrossEntropyLoss()
+
+    use_Adam = True
+    use_scheduler = True
+
+    train_dataset = JsonDataset(
+        "data/ARC/3x1_subsets/train/",
+        max_num_train_puzzles=max_num_train_puzzles,
+        max_num_test_puzzles=max_num_test_puzzles,
+    )
+
+    valid_dataset = JsonDataset(
+        "data/ARC/3x1_subsets/evaluation_subset/",
+        max_num_train_puzzles=max_num_train_puzzles,
+        max_num_test_puzzles=max_num_test_puzzles,
+    )
+
+    if use_partial_size:
+        partial_size = int(partial_dataset_fraction * len(train_dataset))
+        unused = len(train_dataset) - partial_size
+        train_dataset, _ = random_split(train_dataset, [partial_size, unused])
+
+        # partial_size = int(partial_dataset_fraction * len(valid_dataset))
+        # unused = len(valid_dataset) - partial_size
+        # valid_dataset, _ = random_split(valid_dataset, [partial_size, unused])
+
+    train_dataloader = DataLoader(train_dataset, shuffle=True, batch_size=batch_size)
+    valid_dataloader = DataLoader(valid_dataset, shuffle=True, batch_size=batch_size)
+
+    print("\n")
+    print("datatype:", datatype, "  pretrained_datatype:", pretrained_datatype)
+    print(
+        "len(train_dataset):",
+        len(train_dataset),
+        " ...len(valid_dataset):",
+        len(valid_dataset),
+    )
+
+    if use_Adam:
+        optimizer = torch.optim.Adam(model.parameters(), lr=lr)
+    else:
+        optimizer = torch.optim.SGD(model.parameters(), lr=lr)
+
+    if use_scheduler:
+        scheduler = torch.optim.lr_scheduler.OneCycleLR(
+            optimizer,
+            max_lr=lr,
+            steps_per_epoch=len(train_dataloader),
+            epochs=epochs,
+        )
+    else:
+        scheduler = "none"
+
+    last_epoch = 0
+    if continue_training:
+        checkpoint = torch.load(pretrained_model_path)
+        model.load_state_dict(checkpoint["model_state_dict"])
+        if continue_from_prev_epoch:
+            optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+            scheduler.load_state_dict(checkpoint["scheduler_state_dict"])
+            last_epoch = checkpoint["epoch"]
+
+    ###########################################################################
+    ###########################################################################
+    ###########################################################################
+    """
+    Embedding(11, 18)
+    Conv2d(126, 126, kernel_size=(1, 1), stride=(1, 1))
+    PositionalEncoding()
+    TransformerEncoderLayer(
+    (self_attn): MultiheadAttention(
+        (out_proj): NonDynamicallyQuantizableLinear(in_features=126, out_features=126, bias=True)
+    )
+    (linear1): Linear(in_features=126, out_features=2048, bias=True)
+    (dropout): Dropout(p=0.2, inplace=False)
+    (linear2): Linear(in_features=2048, out_features=126, bias=True)
+    (norm1): LayerNorm((126,), eps=1e-05, elementwise_affine=True)
+    (norm2): LayerNorm((126,), eps=1e-05, elementwise_affine=True)
+    (dropout1): Dropout(p=0.2, inplace=False)
+    (dropout2): Dropout(p=0.2, inplace=False)
+    )
+    TransformerEncoder(
+    (layers): ModuleList(
+        (0-4): 5 x TransformerEncoderLayer(
+        (self_attn): MultiheadAttention(
+            (out_proj): NonDynamicallyQuantizableLinear(in_features=126, out_features=126, bias=True)
+        )
+        (linear1): Linear(in_features=126, out_features=2048, bias=True)
+        (dropout): Dropout(p=0.2, inplace=False)
+        (linear2): Linear(in_features=2048, out_features=126, bias=True)
+        (norm1): LayerNorm((126,), eps=1e-05, elementwise_affine=True)
+        (norm2): LayerNorm((126,), eps=1e-05, elementwise_affine=True)
+        (dropout1): Dropout(p=0.2, inplace=False)
+        (dropout2): Dropout(p=0.2, inplace=False)
+        )
+    )
+    )
+    Conv2d(126, 11, kernel_size=(1, 1), stride=(1, 1))
+    """
+    # model_children = list(model.children())
+    # for child in model_children:
+    #     # print(child)
+    #     for param in child.parameters():
+    #         param.requires_grad = False
+
+    # for param in model.decoder.parameters():
+    #     param.requires_grad = True
+
+    # layer_count = 0
+    # num_layers = 5
+    # for layer in model.transformer_encoder.layers:
+    #     layer_count += 1
+    #     if layer_count > num_layers - 5:
+    #         print("unfreezing layer", layer_count)
+    #         for param in layer.parameters():
+    #             param.requires_grad = True
+
+    # for param in model.conv1.parameters():
+    #     param.requires_grad = True
+
+    # for param in model.embedding.parameters():
+    #     param.requires_grad = True
+
+    # for param in model.pos_encoder.parameters():
+    #     param.requires_grad = True
+
+    ###########################################################################
+    ###########################################################################
+    ###########################################################################
+
+    best_valid_accuracy = 0.0
+    best_valid_loss = 100000000
+    if testing:
+        epochs = 1
+
+    for epoch in range(last_epoch + 1, epochs + 1):
+        print(f"Epoch {epoch} of {epochs}")
+        train_epoch_loss, train_accuracy = train(
+            model,
+            len(train_dataset),
+            train_dataloader,
+            device,
+            optimizer,
+            scheduler,
+            criterion,
+            testing,
+        )
+
+        valid_epoch_loss, valid_accuracy = validate(
+            model,
+            len(valid_dataset),
+            valid_dataloader,
+            device,
+            criterion,
+            testing,
+        )
+
+        if not testing:
+            if valid_accuracy > best_valid_accuracy:
+                best_valid_accuracy = valid_accuracy
+            if valid_epoch_loss < best_valid_loss:
+                best_valid_loss = valid_epoch_loss
+                torch.save(
+                    {
+                        "epoch": epoch,
+                        "model_state_dict": model.state_dict(),
+                        "optimizer_state_dict": optimizer.state_dict(),
+                        "scheduler_state_dict": scheduler.state_dict(),  # Include the scheduler state if using
+                    },
+                    new_model_path,
+                )
+
+        print(
+            f"  Train Loss: {train_epoch_loss:.6f}\n",
+            f" Val Loss: {valid_epoch_loss:.6f}\n",
+            f" BEST Val Loss: {best_valid_loss:.6f}\n",
+            f" Train Accuracy: {train_accuracy*100:.2f}%\n",
+            f" Val Accuracy: {valid_accuracy*100:.2f}%\n",
+            f" BEST Val Accuracy: {best_valid_accuracy*100:.2f}%",
+        )
+
+
+if __name__ == "__main__":
+    main()
