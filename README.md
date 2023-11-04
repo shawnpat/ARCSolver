@@ -1,6 +1,6 @@
 This is an attempt at fine-tuning an LLM to solve François Chollet's Abstract Reasoning Corpus (ARC) Challenge.
 
-I'm fine-tuning the Mistral-7B-Instruct and Llama2-7B-chat-hf pretrained models.
+I'm fine-tuning the Mistral-7B-Instruct pretrained model.
 
 Thank you to the people who wrote these blog posts which helped me get started:
 - https://gathnex.medium.com/mistral-7b-fine-tuning-a-step-by-step-guide-52122cdbeca8
