@@ -1,3 +1,4 @@
+import attr
 import numpy as np
 from transformers import AutoTokenizer
 from random import randint
@@ -47,7 +48,9 @@ def generate_random_move(min_move=-3, max_move=3):
     return random_move_row, random_move_col
 
 
-def make_move_obj_grids(min_grid_dim, max_grid_dim, max_attempts=1000):
+def make_move_obj_grids(
+    min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, max_attempts=1000
+):
     input_grids = []
     output_grids = []
 
@@ -55,7 +58,7 @@ def make_move_obj_grids(min_grid_dim, max_grid_dim, max_attempts=1000):
 
     pair_count = 0
     attempts = 0
-    while pair_count < 4 and attempts < max_attempts:
+    while pair_count < num_train_tasks + num_test_tasks and attempts < max_attempts:
         attempts += 1
 
         grid_row_dim = randint(min_grid_dim, max_grid_dim)
@@ -105,13 +108,15 @@ def make_move_obj_grids(min_grid_dim, max_grid_dim, max_attempts=1000):
         pair_count += 1
 
     if attempts == max_attempts:
-        print("Failed to create grids after maximum attempts")
+        print("make_move_obj_grids: Failed to create grids after maximum attempts")
         return None, None, None, None
 
     return random_move_row, random_move_col, input_grids, output_grids
 
 
-def make_rotate_obj_grids(min_grid_dim, max_grid_dim):
+def make_rotate_obj_grids(
+    min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, max_attempts=1000
+):
     input_grids = []
     output_grids = []
 
@@ -119,8 +124,13 @@ def make_rotate_obj_grids(min_grid_dim, max_grid_dim):
     rand_flip_grid = randint(0, 1)
     rot_num = randint(1, 3)
 
+    attempts = 0
     pair_count = 0
-    while pair_count < 4:
+    check_zero_rows_cols_loops = 0
+    loops = 0
+    while pair_count < num_train_tasks + num_test_tasks and attempts < max_attempts:
+        attempts += 1
+
         grid_row_dim = randint(min_grid_dim, max_grid_dim)
         grid_col_dim = randint(min_grid_dim, max_grid_dim)
 
@@ -132,7 +142,9 @@ def make_rotate_obj_grids(min_grid_dim, max_grid_dim):
         size = sub_grid_row_dim * sub_grid_col_dim
         permuted_array = np.random.randint(10, size=size)
 
+        check_zero_rows_cols_loops = 0
         if check_zero_rows_cols(permuted_array, sub_grid_row_dim, sub_grid_col_dim):
+            check_zero_rows_cols_loops += 1
             continue
 
         sub_grid = permuted_array.reshape((sub_grid_row_dim, sub_grid_col_dim))
@@ -143,12 +155,19 @@ def make_rotate_obj_grids(min_grid_dim, max_grid_dim):
 
         rand_start_row_index = randint(0, grid_row_dim - sub_grid_row_dim)
         rand_start_col_index = randint(0, grid_col_dim - sub_grid_col_dim)
+        max_loops = 1000
+        loops = 0
         while (
             rand_start_row_index + sub_grid_row_dim > grid_row_dim
             or rand_start_col_index + sub_grid_col_dim > grid_col_dim
+            and loops < max_loops
         ):
+            loops += 1
             rand_start_row_index = randint(0, grid_row_dim - sub_grid_row_dim)
             rand_start_col_index = randint(0, grid_col_dim - sub_grid_col_dim)
+
+        if loops >= max_loops:
+            continue
 
         input_grid[
             rand_start_row_index : rand_start_row_index + sub_grid_row_dim,
@@ -192,10 +211,19 @@ def make_rotate_obj_grids(min_grid_dim, max_grid_dim):
 
         pair_count += 1
 
+    if attempts == max_attempts:
+        print("make_rotate_obj_grids: Failed to create grids after maximum attempts")
+        print("check_zero_rows_cols_loops", check_zero_rows_cols_loops)
+        print("loops", loops)
+        print("attempts", attempts)
+        return None, None, None, None, None
+
     return rand_rot_grid, rand_flip_grid, rot_num, input_grids, output_grids
 
 
-def make_mirrored_obj_grids(min_grid_dim, max_grid_dim):
+def make_mirrored_obj_grids(
+    min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, max_attempts=1000
+):
     input_grids = []
     output_grids = []
 
@@ -204,9 +232,11 @@ def make_mirrored_obj_grids(min_grid_dim, max_grid_dim):
 
     flip_type = randint(0, 1)
 
-    # Need 4 inputs, 4 outputs (3 train pairs, 1 test pair)
+    attempts = 0
     pair_count = 0
-    while pair_count < 4:
+    while pair_count < num_train_tasks + num_test_tasks:
+        attempts += 1
+
         grid_row_dim = randint(min_grid_dim, max_grid_dim)
         grid_col_dim = randint(min_grid_dim, max_grid_dim)
 
@@ -233,10 +263,16 @@ def make_mirrored_obj_grids(min_grid_dim, max_grid_dim):
 
         pair_count += 1
 
+    if attempts == max_attempts:
+        print("make_mirrored_obj_grids: Failed to create grids after maximum attempts")
+        return None, None, None
+
     return flip_type, input_grids, output_grids
 
 
-def make_scaled_obj_grids(min_grid_dim, max_grid_dim):
+def make_scaled_obj_grids(
+    min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, max_attempts=1000
+):
     input_grids = []
     output_grids = []
 
@@ -246,9 +282,11 @@ def make_scaled_obj_grids(min_grid_dim, max_grid_dim):
     rand_rot_or_flip = randint(0, 5)
     rand_scale_or_shrink = randint(0, 100)
 
-    # Need 4 inputs, 4 outputs (3 train pairs, 1 test pair)
+    attempts = 0
     pair_count = 0
-    while pair_count < 4:
+    while pair_count < num_train_tasks + num_test_tasks and attempts < max_attempts:
+        attempts += 1
+
         grid_x_dim = randint(min_grid_dim, max_grid_dim)
         grid_y_dim = randint(min_grid_dim, max_grid_dim)
 
@@ -314,10 +352,16 @@ def make_scaled_obj_grids(min_grid_dim, max_grid_dim):
 
             pair_count += 1
 
+    if attempts == max_attempts:
+        print("make_scaled_obj_grids: Failed to create grids after maximum attempts")
+        return None, None, None
+
     return rand_scale_or_shrink, input_grids, output_grids
 
 
-def make_swapped_color_grids(min_grid_dim, max_grid_dim):
+def make_swapped_color_grids(
+    min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, max_attempts=1000
+):
     input_grids = []
     output_grids = []
 
@@ -326,8 +370,11 @@ def make_swapped_color_grids(min_grid_dim, max_grid_dim):
     color_permuted_num = randint(1, 9)
     colors_used_in_train_tasks = []
 
+    attempts = 0
     pair_count = 0
-    while pair_count < 4:
+    while pair_count < num_train_tasks + num_test_tasks and attempts < max_attempts:
+        attempts += 1
+
         grid_x_dim = randint(min_grid_dim, max_grid_dim)
         grid_y_dim = randint(min_grid_dim, max_grid_dim)
 
@@ -360,10 +407,16 @@ def make_swapped_color_grids(min_grid_dim, max_grid_dim):
 
         pair_count += 1
 
+    if attempts == max_attempts:
+        print("make_swapped_color_grids: Failed to create grids after maximum attempts")
+        return None, None
+
     return input_grids, output_grids
 
 
-def make_same_shape_grids(min_grid_dim, max_grid_dim):
+def make_same_shape_grids(
+    min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, max_attempts=1000
+):
     input_grids = []
     output_grids = []
 
@@ -371,9 +424,11 @@ def make_same_shape_grids(min_grid_dim, max_grid_dim):
 
     rand_rot_or_flip = randint(0, 5)
 
-    # Need 4 inputs, 4 outputs (3 train pairs, 1 test pair)
+    attempts = 0
     pair_count = 0
-    while pair_count < 4:
+    while pair_count < num_train_tasks + num_test_tasks and attempts < max_attempts:
+        attempts += 1
+
         grid_x_dim = randint(min_grid_dim, max_grid_dim)
         grid_y_dim = randint(min_grid_dim, max_grid_dim)
 
@@ -798,6 +853,10 @@ def make_same_shape_grids(min_grid_dim, max_grid_dim):
 
         pair_count += 1
 
+    if attempts == max_attempts:
+        print("make_same_shape_grids: Failed to create grids after maximum attempts")
+        return None, None, None
+
     return keep_same, input_grids, output_grids
 
 
@@ -853,14 +912,18 @@ def create_instruction(train_input_grids, train_output_grids, test_input_grids):
     return instruction
 
 
-def create_rotate_obj_puzzle_prompt(min_grid_dim, max_grid_dim, tokenizer):
+def create_rotate_obj_puzzle_prompt(
+    min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
+):
     (
         rand_rot_grid,
         rand_flip_grid,
         rot_num,
         input_grids,
         output_grids,
-    ) = make_rotate_obj_grids(min_grid_dim, max_grid_dim)
+    ) = make_rotate_obj_grids(
+        min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks
+    )
 
     train_input_grids = input_grids[:3]
     train_output_grids = output_grids[:3]
@@ -928,9 +991,11 @@ def create_rotate_obj_puzzle_prompt(min_grid_dim, max_grid_dim, tokenizer):
     return instruction, output, token_length
 
 
-def create_move_obj_puzzle_prompt(min_grid_dim, max_grid_dim, tokenizer):
+def create_move_obj_puzzle_prompt(
+    min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
+):
     row_move, column_move, input_grids, output_grids = make_move_obj_grids(
-        min_grid_dim, max_grid_dim
+        min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks
     )
 
     train_input_grids = input_grids[:3]
@@ -976,9 +1041,11 @@ def create_move_obj_puzzle_prompt(min_grid_dim, max_grid_dim, tokenizer):
     return instruction, output, token_length
 
 
-def create_mirrored_obj_puzzle_prompt(min_grid_dim, max_grid_dim, tokenizer):
+def create_mirrored_obj_puzzle_prompt(
+    min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
+):
     flip_type, input_grids, output_grids = make_mirrored_obj_grids(
-        min_grid_dim, max_grid_dim
+        min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks
     )
 
     train_input_grids = input_grids[:3]
@@ -1025,9 +1092,11 @@ def create_mirrored_obj_puzzle_prompt(min_grid_dim, max_grid_dim, tokenizer):
     return instruction, output, token_length
 
 
-def create_scaled_obj_puzzle_prompt(min_grid_dim, max_grid_dim, tokenizer):
+def create_scaled_obj_puzzle_prompt(
+    min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
+):
     rand_scale_or_shrink, input_grids, output_grids = make_scaled_obj_grids(
-        min_grid_dim, max_grid_dim
+        min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks
     )
 
     train_input_grids = input_grids[:3]
@@ -1072,8 +1141,12 @@ def create_scaled_obj_puzzle_prompt(min_grid_dim, max_grid_dim, tokenizer):
     return instruction, output, token_length
 
 
-def create_swapped_color_grids_prompt(min_grid_dim, max_grid_dim, tokenizer):
-    input_grids, output_grids = make_swapped_color_grids(min_grid_dim, max_grid_dim)
+def create_swapped_color_grids_prompt(
+    min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
+):
+    input_grids, output_grids = make_swapped_color_grids(
+        min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks
+    )
 
     train_input_grids = input_grids[:3]
     train_output_grids = output_grids[:3]
@@ -1115,9 +1188,11 @@ def create_swapped_color_grids_prompt(min_grid_dim, max_grid_dim, tokenizer):
     return instruction, output, token_length
 
 
-def create_same_shape_grids_prompt(min_grid_dim, max_grid_dim, tokenizer):
+def create_same_shape_grids_prompt(
+    min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
+):
     keep_same, input_grids, output_grids = make_same_shape_grids(
-        min_grid_dim, max_grid_dim
+        min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks
     )
 
     train_input_grids = input_grids[:3]
@@ -1168,34 +1243,44 @@ def create_same_shape_grids_prompt(min_grid_dim, max_grid_dim, tokenizer):
 
 if __name__ == "__main__":
     min_grid_dim = 6
-    max_grid_dim = 8
+    max_grid_dim = 30
+    num_train_tasks = 3
+    num_test_tasks = 1
     tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
 
     random_puzzle_type = randint(0, 5)
     random_puzzle_type = 5
     if random_puzzle_type == 0:
         instruction, output, token_length = create_rotate_obj_puzzle_prompt(
-            min_grid_dim, max_grid_dim, tokenizer
+            min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
         )
     elif random_puzzle_type == 1:
         instruction, output, token_length = create_move_obj_puzzle_prompt(
-            min_grid_dim, max_grid_dim, tokenizer
+            min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
         )
     elif random_puzzle_type == 2:
-        instruction, output, token_length = create_mirrored_obj_puzzle_prompt(
-            min_grid_dim, max_grid_dim, tokenizer
+        (
+            instruction,
+            output,
+            token_length,
+        ) = create_mirrored_obj_puzzle_prompt(
+            min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
         )
     elif random_puzzle_type == 3:
         instruction, output, token_length = create_scaled_obj_puzzle_prompt(
-            min_grid_dim, max_grid_dim, tokenizer
+            min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
         )
     elif random_puzzle_type == 4:
-        instruction, output, token_length = create_swapped_color_grids_prompt(
-            min_grid_dim, max_grid_dim, tokenizer
+        (
+            instruction,
+            output,
+            token_length,
+        ) = create_swapped_color_grids_prompt(
+            min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
         )
     else:
         instruction, output, token_length = create_same_shape_grids_prompt(
-            8, max_grid_dim, tokenizer
+            min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
         )
 
     print("\ninstruction\n", instruction)
