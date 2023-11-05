@@ -279,7 +279,7 @@ def make_scaled_obj_grids(
     min_sub_grid_dim = 2
     max_sub_grid_dim = 5
 
-    rand_rot_or_flip = randint(0, 5)
+    rand_rot = randint(0, 3)
     rand_scale_or_shrink = randint(0, 100)
 
     attempts = 0
@@ -333,22 +333,17 @@ def make_scaled_obj_grids(
                 rand_start_y_index : rand_start_y_index + scaled_sub_grid_y_dim,
             ] = scaled_sub_grid
 
-            if rand_scale_or_shrink > 50:
-                input_grids.append(input_grid)
-                output_grids.append(output_grid)
-            else:
-                input_grids.append(output_grid)
-                output_grids.append(input_grid)
+            if rand_scale_or_shrink < 50:
+                input_grid_2 = np.copy(output_grid)
+                output_grid = np.copy(input_grid)
+                input_grid = np.copy(input_grid_2)
 
-            if rand_rot_or_flip > 0 and rand_rot_or_flip < 4:
-                input_grid = np.rot90(input_grid, k=rand_rot_or_flip)
-                output_grid = np.rot90(output_grid, k=rand_rot_or_flip)
-            elif rand_rot_or_flip == 4:
-                input_grid = np.fliplr(input_grid)
-                output_grid = np.fliplr(output_grid)
-            elif rand_rot_or_flip == 5:
-                input_grid = np.flipud(input_grid)
-                output_grid = np.flipud(output_grid)
+            if rand_rot > 0 and rand_rot < 4:
+                input_grid = np.rot90(input_grid, k=rand_rot)
+                output_grid = np.rot90(output_grid, k=rand_rot)
+
+            input_grids.append(input_grid)
+            output_grids.append(output_grid)
 
             pair_count += 1
 
@@ -356,7 +351,7 @@ def make_scaled_obj_grids(
         print("make_scaled_obj_grids: Failed to create grids after maximum attempts")
         return None, None, None
 
-    return rand_scale_or_shrink, input_grids, output_grids
+    return rand_rot, rand_scale_or_shrink, input_grids, output_grids
 
 
 def make_swapped_color_grids(
@@ -860,9 +855,90 @@ def make_same_shape_grids(
     return keep_same, input_grids, output_grids
 
 
+def make_fill_pattern_holes_grids(
+    min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, max_attempts=1000
+):
+    input_grids = []
+    output_grids = []
+
+    attempts = 0
+    pair_count = 0
+    while pair_count < num_train_tasks + num_test_tasks and attempts < max_attempts:
+        attempts += 1
+
+        grid_x_dim = randint(min_grid_dim, max_grid_dim)
+        while grid_x_dim % 2 > 0:
+            grid_x_dim = randint(min_grid_dim, max_grid_dim)
+        grid_y_dim = randint(min_grid_dim, max_grid_dim)
+        while grid_y_dim % 2 > 0:
+            grid_y_dim = randint(min_grid_dim, max_grid_dim)
+
+        quarter_grid_dim_x = grid_x_dim // 2
+        quarter_grid_dim_y = grid_y_dim // 2
+
+        output_grid = np.zeros((grid_x_dim, grid_y_dim), dtype=int)
+        flat_quarter_grid = np.random.randint(
+            1, 10, size=(quarter_grid_dim_x * quarter_grid_dim_y)
+        )
+        quarter_1_grid = flat_quarter_grid.reshape(
+            (quarter_grid_dim_x, quarter_grid_dim_y)
+        )
+
+        output_grid[
+            0:quarter_grid_dim_x,
+            0:quarter_grid_dim_y,
+        ] = quarter_1_grid
+
+        output_grid[
+            quarter_grid_dim_x:,
+            0:quarter_grid_dim_y,
+        ] = np.flipud(quarter_1_grid)
+
+        output_grid[
+            0:quarter_grid_dim_x,
+            quarter_grid_dim_y:,
+        ] = np.fliplr(quarter_1_grid)
+
+        output_grid[
+            quarter_grid_dim_x:,
+            quarter_grid_dim_y:,
+        ] = np.fliplr(np.flipud(quarter_1_grid))
+
+        output_grids.append(output_grid)
+
+        input_grid = np.copy(output_grid)
+        no_black_squares = True
+        while no_black_squares:
+            for x in range(grid_x_dim):
+                for y in range(grid_y_dim):
+                    make_black = randint(1, 100)
+                    if make_black > 95:
+                        input_grid[x][y] = 0
+                        no_black_squares = False
+        input_grids.append(input_grid)
+
+        pair_count += 1
+
+    if attempts == max_attempts:
+        print(
+            "make_fill_pattern_holes_grids: Failed to create grids after maximum attempts"
+        )
+        return None, None
+
+    return input_grids, output_grids
+
+
 ###################################################################################################################
 def create_instruction(train_input_grids, train_output_grids, test_input_grids):
-    instruction = "Given the following input/output train pairs of ARCSolver grids: "
+    instruction = "Please solve this abstract reasoning puzzle: "
+    instruction += (
+        "You are given "
+        + str(len(train_input_grids))
+        + " input/output train pairs of grids in two dimensional array format. "
+    )
+    instruction += "Each grid square contains an integer from 0 to 9. These intergers are symbols that represent colors, and should not be thought of as scalar values. "
+    instruction += "The 0 symbol represents an empty square. The other integers identify that the grid square is occupied by a tile of that symbol's color. "
+    instruction += "Given the following train pairs: "
 
     for i, (train_input_grid, train_output_grid) in enumerate(
         zip(train_input_grids, train_output_grids)
@@ -892,8 +968,8 @@ def create_instruction(train_input_grids, train_output_grids, test_input_grids):
         if i != len(train_output_grids) - 1:
             instruction += ", "
 
-    instruction += ". Find the transformation from each input grid to output grid that is common to all 3 train pairs."
-    instruction += " Then apply this transformation to the following test input grid to get the test output grid: "
+    instruction += " find the transformation from each input grid to output grid that is common to all 3 train pairs. "
+    instruction += "Then apply this transformation to the following test input grid to get the test output grid: "
 
     for i, (test_input_grid) in enumerate(test_input_grids):
         instruction += f"Test_Input_{i+1}=["
@@ -908,6 +984,7 @@ def create_instruction(train_input_grids, train_output_grids, test_input_grids):
                 instruction += ","
         instruction += "]"
     instruction += "."
+    instruction += " Use your knowledge of core principals in physics, mathematics, and common sense logic to solve this puzzle. "
 
     return instruction
 
@@ -1095,15 +1172,15 @@ def create_mirrored_obj_puzzle_prompt(
 def create_scaled_obj_puzzle_prompt(
     min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
 ):
-    rand_scale_or_shrink, input_grids, output_grids = make_scaled_obj_grids(
+    rand_rot, rand_scale_or_shrink, input_grids, output_grids = make_scaled_obj_grids(
         min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks
     )
 
-    train_input_grids = input_grids[:3]
-    train_output_grids = output_grids[:3]
+    train_input_grids = input_grids[:num_train_tasks]
+    train_output_grids = output_grids[:num_train_tasks]
 
-    test_input_grids = input_grids[3:]
-    test_output_grids = output_grids[3:]
+    test_input_grids = input_grids[num_train_tasks:]
+    test_output_grids = output_grids[num_train_tasks:]
 
     instruction = create_instruction(
         train_input_grids, train_output_grids, test_input_grids
@@ -1114,7 +1191,20 @@ def create_scaled_obj_puzzle_prompt(
         output += "up"
     else:
         output += "down"
-    output += " by 2 about its top left element to get the corresponding train output grid. Therefore, "
+    output += " by 2 about its "
+    if rand_rot == 0:
+        output += (
+            "top left element to get the corresponding train output grid. Therefore, "
+        )
+    elif rand_rot == 1:
+        output += "bottom left element to get the corresponding train output grid. Therefore, "
+    elif rand_rot == 2:
+        output += "bottom right element to get the corresponding train output grid. Therefore, "
+    else:
+        output += (
+            "top right element to get the corresponding train output grid. Therefore, "
+        )
+
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
         for j in range(len(test_output_grid)):
@@ -1241,15 +1331,67 @@ def create_same_shape_grids_prompt(
     return instruction, output, token_length
 
 
+def create_fill_pattern_holes_grids_prompt(
+    min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
+):
+    input_grids, output_grids = make_fill_pattern_holes_grids(
+        min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks
+    )
+
+    train_input_grids = input_grids[:3]
+    train_output_grids = output_grids[:3]
+
+    test_input_grids = input_grids[3:]
+    test_output_grids = output_grids[3:]
+
+    instruction = create_instruction(
+        train_input_grids, train_output_grids, test_input_grids
+    )
+
+    output = "There are patterns in each quadrant of each train input grid that are repeated and flipped depending on their quadrant position in the grid. "
+    output += (
+        "There are also holes (grid squares with integer 0) in the train input grids. "
+    )
+    output += (
+        "The common transformation is that the holes in each train input grid are "
+    )
+    output += "filled in with the corresponding pattern to get the corresponding train output grid. Therefore, "
+
+    for i, (test_output_grid) in enumerate(test_output_grids):
+        output += f"Test_Output_{i+1}=["
+        for j in range(len(test_output_grid)):
+            output += "["
+            for k in range(len(test_output_grid[j])):
+                output += str(test_output_grid[j][k])
+                if k != len(test_output_grid[j]) - 1:
+                    output += ","
+            output += "]"
+            if j != len(test_output_grid) - 1:
+                output += ","
+        output += "]"
+        if i != len(test_output_grids) - 1:
+            output += ", "
+    output += "."
+
+    # Tokenize the request text
+    prompt = instruction + " " + output
+    tokenized_request = tokenizer.tokenize(prompt)
+
+    # Get the token length
+    token_length = len(tokenized_request)
+
+    return instruction, output, token_length
+
+
 if __name__ == "__main__":
     min_grid_dim = 6
-    max_grid_dim = 30
+    max_grid_dim = 8
     num_train_tasks = 3
     num_test_tasks = 1
     tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
 
-    random_puzzle_type = randint(0, 5)
-    random_puzzle_type = 5
+    random_puzzle_type = randint(0, 6)
+    # random_puzzle_type = 3
     if random_puzzle_type == 0:
         instruction, output, token_length = create_rotate_obj_puzzle_prompt(
             min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
@@ -1278,8 +1420,12 @@ if __name__ == "__main__":
         ) = create_swapped_color_grids_prompt(
             min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
         )
-    else:
+    elif random_puzzle_type == 5:
         instruction, output, token_length = create_same_shape_grids_prompt(
+            min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
+        )
+    else:
+        instruction, output, token_length = create_fill_pattern_holes_grids_prompt(
             min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
         )
 
