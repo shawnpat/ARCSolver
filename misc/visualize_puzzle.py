@@ -77,7 +77,7 @@ def pick_random_file(directory):
     return None
 
 
-directory = "data/puzzles/"
+directory = "data/ARC/training/"
 file_path = ""
 while not file_path.endswith(".json"):
     file_path = pick_random_file(directory)
