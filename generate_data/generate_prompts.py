@@ -463,7 +463,10 @@ def make_same_shape_grids(
         #################### obj 2 ##################################################
         black_row_or_column = True
         overlapping = True
-        while black_row_or_column or overlapping:
+        max_loop_count = 1000
+        loop_count = 0
+        while black_row_or_column or overlapping and loop_count < max_loop_count:
+            loop_count += 1
             black_row_or_column = False
             overlapping = False
 
@@ -545,12 +548,21 @@ def make_same_shape_grids(
             if overlapping:
                 continue
 
+        if loop_count >= max_loop_count:
+            continue
         #################### obj 3 ##################################################
         black_row_or_column = True
         overlapping = True
         same_as_sub_grid_1 = True
         obj_3_loop_count = 0
-        while black_row_or_column or overlapping or same_as_sub_grid_1:
+        loop_count = 0
+        while (
+            black_row_or_column
+            or overlapping
+            or same_as_sub_grid_1
+            and loop_count < max_loop_count
+        ):
+            loop_count += 1
             obj_3_loop_count += 1
             if obj_3_loop_count > 100:
                 print("looping too much", obj_3_loop_count)
@@ -817,6 +829,9 @@ def make_same_shape_grids(
                     break
             if overlapping:
                 continue
+
+        if loop_count >= max_loop_count:
+            continue
 
         input_grid = np.copy(isolated_obj_grid_1)
         for x in range(grid_x_dim):
@@ -1801,7 +1816,9 @@ def make_multiple_objs_grids(
 
     if attempts == max_attempts:
         print("make_multiple_objs_grids: Failed to create grids after maximum attempts")
-        return None, None
+        input_grids, output_grids = make_multiple_objs_grids(
+            min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks
+        )
 
     return input_grids, output_grids
 
@@ -2043,8 +2060,6 @@ def make_same_color_objs_grids(
         obj_3_loop_count = 0
         while black_row_or_column or same_square_count or overlapping:
             obj_3_loop_count += 1
-            if obj_3_loop_count > 100:
-                print("looping too much", obj_3_loop_count)
             black_row_or_column = False
             same_square_count = False
             overlapping = False
@@ -2293,7 +2308,7 @@ def create_instruction(train_input_grids, train_output_grids, test_input_grids):
                 instruction += ","
         instruction += "]"
     instruction += "."
-    instruction += " Use your knowledge of core principals in physics, mathematics, logic, and reasoning to solve this puzzle. "
+    instruction += " Use your knowledge of core principals in physics, mathematics, chain of thought reasoning to solve this puzzle. "
 
     return instruction
 
@@ -2322,34 +2337,37 @@ def create_rotate_obj_puzzle_prompt(
     )
 
     output = (
-        "The common transformation is that the non-zero element sub-grid in each train input grid is rotated "
+        "The candidate transformation is that the non-zero element sub-grid in each train input grid is rotated "
         + str(rot_num * 90)
     )
 
     if rand_rot_grid == 0 and rand_flip_grid == 0:
         # No grid transformation = rotate counter-clockwise around top-left corner
-        output += " degrees counter-clockwise about its top left element to get the corresponding train output grid. Therefore, "
+        output += " degrees counter-clockwise about its top left element to get the corresponding train output grid.  "
     elif rand_rot_grid == 0 and rand_flip_grid == 1:
         # Flip grid left-right, no grid rotation = rotate clockwise around top-right corner
-        output += " degrees clockwise about its top right element to get the corresponding train output grid. Therefore, "
+        output += " degrees clockwise about its top right element to get the corresponding train output grid. "
     elif rand_rot_grid == 1 and rand_flip_grid == 0:
         # Rotate grid 90 degrees counter-clockwise, no flip = rotate counter-clockwise around bottom-left corner
-        output += " degrees counter-clockwise about its bottom left element to get the corresponding train output grid. Therefore, "
+        output += " degrees counter-clockwise about its bottom left element to get the corresponding train output grid. "
     elif rand_rot_grid == 1 and rand_flip_grid == 1:
         # Rotate grid 90 degrees counter-clockwise and flip left-right = rotate clockwise around bottom-right corner
-        output += " degrees clockwise about its bottom right element to get the corresponding train output grid. Therefore, "
+        output += " degrees clockwise about its bottom right element to get the corresponding train output grid. "
     elif rand_rot_grid == 2 and rand_flip_grid == 0:
         # Rotate grid 180 degrees counter-clockwise = rotate counter-clockwise around bottom-right corner
-        output += " degrees counter-clockwise about its bottom right element to get the corresponding train output grid. Therefore, "
+        output += " degrees counter-clockwise about its bottom right element to get the corresponding train output grid. "
     elif rand_rot_grid == 2 and rand_flip_grid == 1:
         # Rotate grid 180 degrees counter-clockwise and flip left-right = rotate clockwise around bottom-left corner
-        output += " degrees clockwise about its bottom left element to get the corresponding train output grid. Therefore, "
+        output += " degrees clockwise about its bottom left element to get the corresponding train output grid. "
     elif rand_rot_grid == 3 and rand_flip_grid == 0:
         # Rotate grid 270 degrees counter-clockwise = rotate counter-clockwise around top-right corner
-        output += " degrees counter-clockwise about its top right element to get the corresponding train output grid. Therefore, "
+        output += " degrees counter-clockwise about its top right element to get the corresponding train output grid. "
     else:
         # Rotate grid 270 degrees counter-clockwise and flip left-right = rotate clockwise around top-left corner
-        output += " degrees clockwise about its top left element to get the corresponding train output grid. Therefore, "
+        output += " degrees clockwise about its top left element to get the corresponding train output grid. "
+
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -2395,12 +2413,14 @@ def create_move_obj_puzzle_prompt(
     )
 
     output = (
-        "The common transformation is that the non-zero element sub-grid in each train input grid is moved "
+        "The candidate transformation is that the non-zero element sub-grid in each train input grid is moved "
         + str(row_move)
         + " units vertically and "
         + str(column_move)
-        + " units horizontally to get the corresponding train output grid. Therefore, "
+        + " units horizontally to get the corresponding train output grid. "
     )
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
         for j in range(len(test_output_grid)):
@@ -2444,14 +2464,14 @@ def create_mirrored_obj_puzzle_prompt(
         train_input_grids, train_output_grids, test_input_grids
     )
 
-    output = "The common transformation is that the non-zero element sub-grid in each train input grid is mirrored "
+    output = "The candidate transformation is that the non-zero element sub-grid in each train input grid is mirrored "
     if flip_type == 0:
         output += "vertically"
     else:
         output += "horizontally"
-    output += (
-        " about its center to get the corresponding train output grid. Therefore, "
-    )
+    output += " about its center to get the corresponding train output grid. "
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
         for j in range(len(test_output_grid)):
@@ -2495,24 +2515,22 @@ def create_scaled_obj_puzzle_prompt(
         train_input_grids, train_output_grids, test_input_grids
     )
 
-    output = "The common transformation is that the non-zero element sub-grid in each train input grid is scaled "
+    output = "The candidate transformation is that the non-zero element sub-grid in each train input grid is scaled "
     if rand_scale_or_shrink > 50:
         output += "up"
     else:
         output += "down"
     output += " by 2 about its "
     if rand_rot == 0:
-        output += (
-            "top left element to get the corresponding train output grid. Therefore, "
-        )
+        output += "top left element to get the corresponding train output grid. "
     elif rand_rot == 1:
-        output += "bottom left element to get the corresponding train output grid. Therefore, "
+        output += "bottom left element to get the corresponding train output grid. "
     elif rand_rot == 2:
-        output += "bottom right element to get the corresponding train output grid. Therefore, "
+        output += "bottom right element to get the corresponding train output grid. "
     else:
-        output += (
-            "top right element to get the corresponding train output grid. Therefore, "
-        )
+        output += "top right element to get the corresponding train output grid. "
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -2557,9 +2575,11 @@ def create_swapped_color_grids_prompt(
         train_input_grids, train_output_grids, test_input_grids
     )
 
-    output = "The common transformation is that certain integers in each train input grid are "
+    output = "The candidate transformation is that certain integers in each train input grid are "
     output += "swapped with other integers to get the corresponding train output grid. "
-    output += "These swapped integers are the same throughout all of the train sets. Therefore, "
+    output += "These swapped integers are the same throughout all of the train sets. "
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -2604,13 +2624,15 @@ def create_same_shape_grids_prompt(
         train_input_grids, train_output_grids, test_input_grids
     )
 
-    output = (
-        "The common transformation is that sub-grids in each train input grid that are "
-    )
+    output = "The candidate transformation is that sub-grids in each train input grid that are "
     if keep_same > 0:
-        output += "not the same shape are removed to get the corresponding train output grid. Therefore, "
+        output += "not the same shape are removed to get the corresponding train output grid. "
     else:
-        output += "the same shape are removed to get the corresponding train output grid. Therefore, "
+        output += (
+            "the same shape are removed to get the corresponding train output grid. "
+        )
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -2660,9 +2682,11 @@ def create_fill_pattern_holes_grids_prompt(
         "There are also holes (grid squares with integer 0) in the train input grids. "
     )
     output += (
-        "The common transformation is that the holes in each train input grid are "
+        "The candidate transformation is that the holes in each train input grid are "
     )
-    output += "filled in with the corresponding pattern to get the corresponding train output grid. Therefore, "
+    output += "filled in with the corresponding pattern to get the corresponding train output grid. "
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -2712,9 +2736,11 @@ def create_fill_rotated_pattern_holes_grids_prompt(
         "There are also holes (grid squares with integer 0) in the train input grids. "
     )
     output += (
-        "The common transformation is that the holes in each train input grid are "
+        "The candidate transformation is that the holes in each train input grid are "
     )
     output += "filled in with the corresponding pattern to get the corresponding train output grid. Therefore, "
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -2761,10 +2787,11 @@ def create_fill_surrounded_grids_prompt(
 
     output = "There are empty grid squares (integer 0) in each train input grid that are surrounded by colored tiles. "
     if fill_exterior > 49:
-        output += "The common transformation is that the empty grid squares that are not surrounded are filled with a certain color of tile that is common in all train output grids."
+        output += "The candidate transformation is that the empty grid squares that are not surrounded are filled with a certain color of tile that is common in all train output grids."
     else:
-        output += "The common transformation is that the surrounded empty grid squares are filled with a certain color of tile that is common in all train output grids."
-    output += " Therefore, "
+        output += "The candidate transformation is that the surrounded empty grid squares are filled with a certain color of tile that is common in all train output grids."
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -2809,7 +2836,7 @@ def create_gravity_grids_prompt(
         train_input_grids, train_output_grids, test_input_grids
     )
 
-    output = "The common transformation is to conceptualize a gravitational or magnetic force that acts "
+    output = "The candidate transformation is to conceptualize a gravitational or magnetic force that acts "
     output += (
         "on the grid tiles in each train input grid to pull them all to one side. "
     )
@@ -2817,7 +2844,8 @@ def create_gravity_grids_prompt(
         "Grid tiles can not pass through each other so they must stack against each "
     )
     output += "other in when they encounter another tile that is closer to the side. "
-    output += " Therefore, "
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -2862,9 +2890,10 @@ def create_isolate_obj_grids_prompt(
         train_input_grids, train_output_grids, test_input_grids
     )
 
-    output = "The common transformation is to isolate the sub-grid that is common "
+    output = "The candidate transformation is to isolate the sub-grid that is common "
     output += "to every train input grid and delete the other grid tiles (replace integer with symbolic integer 0). "
-    output += "Therefore, "
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -2909,12 +2938,13 @@ def create_largest_smallest_obj_grids_prompt(
         train_input_grids, train_output_grids, test_input_grids
     )
 
-    output = "The common transformation to create an output grid that is "
+    output = "The candidate transformation to create an output grid that is "
     if keep_larger > 0:
         output += "the largest sub-grid in the input grid."
     else:
         output += "the smallest sub-grid in the input grid."
-    output += "Therefore, "
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -2959,7 +2989,7 @@ def create_mask_obj_grids_prompt(
         train_input_grids, train_output_grids, test_input_grids
     )
 
-    output = "The common transformation is to "
+    output = "The candidate transformation is to "
     if mask_color > 0:
         output += "replace the sub-grid that is common "
         output += (
@@ -2974,7 +3004,8 @@ def create_mask_obj_grids_prompt(
         )
         output += "to every train input grid. "
 
-    output += "Therefore, "
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -3019,13 +3050,14 @@ def create_mirror_grids_prompt(
         train_input_grids, train_output_grids, test_input_grids
     )
 
-    output = "The common transformation is to flip the entire train input grid "
+    output = "The candidate transformation is to flip the entire train input grid "
     if flip_type == 0:
         output += "vertically. "
     else:
         output += "horizontally. "
 
-    output += "Therefore, "
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -3070,7 +3102,7 @@ def create_most_freq_in_row_grids_prompt(
         train_input_grids, train_output_grids, test_input_grids
     )
 
-    output = "The common transformation to create a 1 "
+    output = "The candidate transformation to create a 1 "
     if find_column == 0:
         output += "column "
     else:
@@ -3082,7 +3114,8 @@ def create_most_freq_in_row_grids_prompt(
     else:
         output += "column. "
 
-    output += "Therefore, "
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -3127,9 +3160,10 @@ def create_multiple_objs_grids_prompt(
         train_input_grids, train_output_grids, test_input_grids
     )
 
-    output = "The common transformation is to isolate the sub-grids that exist in multiples in each train input grid "
+    output = "The candidate transformation is to isolate the sub-grids that exist in multiples in each train input grid "
     output += "by deleting (replacing with symbolic integer 0) the other grid tiles. "
-    output += "Therefore, "
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -3174,12 +3208,13 @@ def create_rays_grids_prompt(
         train_input_grids, train_output_grids, test_input_grids
     )
 
-    output = "The common transformation is that a ray is extended from any grid tile on edge of the train input grid. "
+    output = "The candidate transformation is that a ray is extended from any grid tile on edge of the train input grid. "
     output += "The ray is a striaght line of grid tilesthe same color as the initial grid tile. "
     output += (
         "This ray extends until it hits another grid tile or the edge of the grid. "
     )
-    output += "Therefore, "
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -3225,12 +3260,13 @@ def create_rotate_grids_prompt(
     )
 
     output = (
-        "The common transformation is to rotate the entire train input grid "
+        "The candidate transformation is to rotate the entire train input grid "
         + str(rot_num * 90)
         + " degrees clockwise. "
     )
 
-    output += "Therefore, "
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -3275,9 +3311,7 @@ def create_same_color_objs_grids_prompt(
         train_input_grids, train_output_grids, test_input_grids
     )
 
-    output = (
-        "The common transformation is that sub-grids in each train input grid that are "
-    )
+    output = "The candidate transformation is that sub-grids in each train input grid that are "
     if keep_same > 0:
         output += "not the same colors are removed to get the corresponding train output grid. "
     else:
@@ -3285,7 +3319,8 @@ def create_same_color_objs_grids_prompt(
             "the same colors are removed to get the corresponding train output grid. "
         )
 
-    output += "Therefore, "
+    output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
+    output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
     for i, (test_output_grid) in enumerate(test_output_grids):
         output += f"Test_Output_{i+1}=["
@@ -3317,12 +3352,12 @@ def create_same_color_objs_grids_prompt(
 if __name__ == "__main__":
     min_grid_dim = 8
     max_grid_dim = 12
-    num_train_tasks = 3
+    num_train_tasks = randint(2, 3)
     num_test_tasks = 1
     tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-Instruct-v0.1")
 
     random_puzzle_type = randint(0, 18)
-    random_puzzle_type = 18
+    # random_puzzle_type = 18
     if random_puzzle_type == 0:
         instruction, output, token_length = create_rotate_obj_puzzle_prompt(
             min_grid_dim, max_grid_dim, num_train_tasks, num_test_tasks, tokenizer
