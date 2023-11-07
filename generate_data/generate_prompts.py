@@ -2232,7 +2232,7 @@ def make_same_color_objs_grids(
 
 ###############################################################################
 def create_instruction(train_input_grids, train_output_grids, test_input_grids):
-    instruction = "Please solve this abstract reasoning puzzle: "
+    instruction = "This is an abstract reasoning puzzle: "
     instruction += (
         "Below are input/output pairs of grids in two dimensional array format. "
     )
@@ -2290,10 +2290,8 @@ def create_instruction(train_input_grids, train_output_grids, test_input_grids):
     instruction += "If the candidate transformation fails to produce the correct train output grid for any of the train pairs, "
 
     instruction += "then that candidate transformation is incorrect. Devise a new candidate transformation and re-test on the train pairs. "
-    instruction += "Once you have discovered the correct common tranformation that works on all train pairs, "
-    instruction += (
-        "apply it to the following test input grid to get the test output grid: "
-    )
+    instruction += "Repeat this testing until you have discovered the correct common transformation that works on all train pairs. "
+    instruction += "Then apply this transformation to the following test input grid to get the test output grid: "
 
     for i, (test_input_grid) in enumerate(test_input_grids):
         instruction += f"Test_Input_{i+1}=["
@@ -2308,7 +2306,7 @@ def create_instruction(train_input_grids, train_output_grids, test_input_grids):
                 instruction += ","
         instruction += "]"
     instruction += "."
-    instruction += " Use your knowledge of core principals in physics, mathematics, chain of thought reasoning to solve this puzzle. "
+    instruction += " Use your knowledge of core principals in physics, mathematics, and chain of thought reasoning to solve this puzzle. "
 
     return instruction
 
@@ -2684,7 +2682,7 @@ def create_fill_pattern_holes_grids_prompt(
     output += (
         "The candidate transformation is that the holes in each train input grid are "
     )
-    output += "filled in with the corresponding pattern to get the corresponding train output grid. "
+    output += "filled in with the corresponding pattern to get the train output grid. "
     output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
     output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
@@ -2940,9 +2938,9 @@ def create_largest_smallest_obj_grids_prompt(
 
     output = "The candidate transformation to create an output grid that is "
     if keep_larger > 0:
-        output += "the largest sub-grid in the input grid."
+        output += "the largest sub-grid in the input grid. "
     else:
-        output += "the smallest sub-grid in the input grid."
+        output += "the smallest sub-grid in the input grid. "
     output += "I've tested this candidate transformation on each of the train pairs, and it works for all of them. "
     output += "Therefore, I've applied the candidate transformation to the test input grid to get the following test output grid: "
 
@@ -3209,7 +3207,7 @@ def create_rays_grids_prompt(
     )
 
     output = "The candidate transformation is that a ray is extended from any grid tile on edge of the train input grid. "
-    output += "The ray is a striaght line of grid tilesthe same color as the initial grid tile. "
+    output += "The ray is a striaght line of grid tiles the same color as the initial grid tile. "
     output += (
         "This ray extends until it hits another grid tile or the edge of the grid. "
     )

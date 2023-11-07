@@ -81,7 +81,7 @@ directory = "data/ARC/training/"
 file_path = ""
 while not file_path.endswith(".json"):
     file_path = pick_random_file(directory)
-# file_path = "data/temp.json"
+file_path = "data/ARC/training/fcc82909.json"
 print(file_path)
 task = open_arc_json(file_path)
 plot_task(task)
