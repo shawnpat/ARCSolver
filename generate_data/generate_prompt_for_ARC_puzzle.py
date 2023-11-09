@@ -1,12 +1,3 @@
-from cgi import test
-from math import perm
-import attr
-import numpy as np
-from sympy import per
-from torch import fill
-from transformers import AutoTokenizer
-import random
-from random import randint
 import json
 import os
 
@@ -88,79 +79,49 @@ def create_instruction(train_input_grids, train_output_grids, test_input_grids):
     instruction += "Groups of tiles that are adjacent to each other can be considered as objects, or sub-grids. "
     instruction += "Sub-grids can also be created, destroyed, moved, scaled, rotated, or change color. "
     instruction += " Grid tiles and sub-grids can spawn into lines that extend vertically, horizontally, or diagonally. "
-    instruction += (
-        "Devise a candidate transformation and test it on each of the train grids. "
-    )
-    instruction += "If the candidate transformation fails to produce the correct train output grid for any of the train pairs, "
-
-    instruction += "then that candidate transformation is incorrect. Devise a new candidate transformation and re-test on the train pairs. "
-    instruction += "Repeat this testing until you have discovered the correct common transformation that works on all train pairs. "
-    instruction += "Then apply this transformation to the following test input grid to get the test output grid: "
-
-    for i, (test_input_grid) in enumerate(test_input_grids):
-        instruction += f"Test_Input_{i+1}=["
-        for j in range(len(test_input_grid)):
-            instruction += "["
-            for k in range(len(test_input_grid[j])):
-                instruction += str(test_input_grid[j][k])
-                if k != len(test_input_grid[j]) - 1:
-                    instruction += ","
-            instruction += "]"
-            if j != len(test_input_grid) - 1:
-                instruction += ","
-        instruction += "]"
-    instruction += "."
     instruction += " Use your knowledge of core principals in physics, mathematics, and chain of thought reasoning to solve this puzzle. "
+    instruction += "Step 1: Devise a candidate transformation and describe it in words. No coding or machine learning. Stop after you "
+    instruction += "complete Step 1. "
 
     return instruction
 
 
 ###############################################################################
 if __name__ == "__main__":
-    directory = "data/ARC/evaluation/"
+    file_path = "data/ARC/evaluation/0a2355a6.json"
 
-    file_list = []
-    for root, dirs, files in os.walk(directory):
-        for name in files:
-            file_path = os.path.join(root, name)
+    with open(file_path, "r") as f:
+        data = json.load(f)
+    train_tasks = data["train"]
+    test_tasks = data["test"]
 
-            with open(file_path, "r") as f:
-                data = json.load(f)
-            train_tasks = data["train"]
-            test_tasks = data["test"]
-            file_list.append(file_path)
+    train_input_grids = []
+    train_output_grids = []
+    test_input_grids = []
+    test_output_grids = []
 
-            # file_path = ""
-            # while not file_path.endswith(".json"):
-            #     file_path = pick_random_file(directory)
-            # task = open_arc_json(file_path)
+    for train_task in train_tasks:
+        ti = train_task["input"]
+        train_input_grids.append(ti)
 
-            # train_tasks = task["train"]
-            # test_tasks = task["test"]
+        to = train_task["output"]
+        train_output_grids.append(to)
 
-            train_input_grids = []
-            train_output_grids = []
-            test_input_grids = []
-            test_output_grids = []
+    for test_task in test_tasks:
+        ti = test_task["input"]
+        test_input_grids.append(ti)
 
-            for train_task in train_tasks:
-                ti = train_task["input"]
-                train_input_grids.append(ti)
+        to = test_task["output"]
+        test_output_grids.append(to)
 
-                to = train_task["output"]
-                train_output_grids.append(to)
-
-            for test_task in test_tasks:
-                ti = test_task["input"]
-                test_input_grids.append(ti)
-
-                to = test_task["output"]
-                test_output_grids.append(to)
-
-            instruction = create_instruction(
-                train_input_grids, train_output_grids, test_input_grids
-            )
-            print("\ninstruction\n", instruction)
-
-            output = test_output_grids[0]
-            print("\noutput\n", output)
+    instruction = create_instruction(
+        train_input_grids, train_output_grids, test_input_grids
+    )
+    print("\ninstruction\n", instruction)
+    print("\n")
+    print("Apply the tranformation you've developed to the following test input grid: ")
+    print(test_input_grids[0])
+    print("Please predcit the test output grid:")
+    print("\n")
+    output = test_output_grids[0]
+    print("\noutput\n", output)
