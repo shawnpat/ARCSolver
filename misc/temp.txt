@@ -1,0 +1,9 @@
+Your new function predicted the train 1 output to be:
+[2, 2, 5]
+
+The ground truth train 1 output is:
+[[8, 4, 3], [1, 3, 7], [8, 4, 1]]
+
+Please revise your transformation hypothesis based on this new info and describe your new transformation hypothesis in words. 
+
+Great! Please rewrite your python function based on your new hypothesis. No placeholder code.
