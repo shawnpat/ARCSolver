@@ -1,0 +1,111 @@
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+Cell In[8], line 1
+----> 1 main()
+
+Cell In[7], line 47, in main()
+     28 # Set training parameters
+     29 training_arguments = TrainingArguments(
+     30     output_dir=output_dir,
+     31     max_steps=steps_per_epoch,
+   (...)
+     44     gradient_checkpointing=True,
+     45 )
+---> 47 trainer = CustomSFTTrainer(
+     48     model=model,
+     49     train_dataset=dataset,
+     50     peft_config=peft_config,
+     51     dataset_text_field="prompt",
+     52     max_seq_length=max_seq_length,
+     53     tokenizer=tokenizer,
+     54     args=training_arguments,
+     55 )
+     57 # Train model
+     58 trainer.train(base_model_name)
+
+Cell In[3], line 8, in CustomSFTTrainer.__init__(self, tokenizer, *args, **kwargs)
+      7 def __init__(self, tokenizer, *args, **kwargs):
+----> 8     super(CustomSFTTrainer, self).__init__(*args, **kwargs)
+      9     self.tokenizer = tokenizer
+
+File ~/mambaforge/envs/tensorml/lib/python3.11/site-packages/trl/trainer/sft_trainer.py:180, in SFTTrainer.__init__(self, model, args, data_collator, train_dataset, eval_dataset, tokenizer, model_init, compute_metrics, callbacks, optimizers, preprocess_logits_for_metrics, peft_config, dataset_text_field, packing, formatting_func, max_seq_length, infinite, num_of_sequences, chars_per_token, dataset_num_proc, dataset_batch_size, neftune_noise_alpha, model_init_kwargs)
+    176         model = prepare_model_for_kbit_training(model, **preprare_model_kwargs)
+    178         args = dataclasses.replace(args, gradient_checkpointing=False)
+--> 180     model = get_peft_model(model, peft_config)
+    182 if callbacks is None:
+    183     callbacks = [PeftSavingCallback]
+
+File ~/mambaforge/envs/tensorml/lib/python3.11/site-packages/peft/mapping.py:120, in get_peft_model(model, peft_config, adapter_name)
+    118 if peft_config.is_prompt_learning:
+    119     peft_config = _prepare_prompt_learning_config(peft_config, model_config)
+--> 120 return MODEL_TYPE_TO_PEFT_MODEL_MAPPING[peft_config.task_type](model, peft_config, adapter_name=adapter_name)
+
+File ~/mambaforge/envs/tensorml/lib/python3.11/site-packages/peft/peft_model.py:994, in PeftModelForCausalLM.__init__(self, model, peft_config, adapter_name)
+    993 def __init__(self, model, peft_config: PeftConfig, adapter_name="default"):
+--> 994     super().__init__(model, peft_config, adapter_name)
+    995     self.base_model_prepare_inputs_for_generation = self.base_model.prepare_inputs_for_generation
+
+File ~/mambaforge/envs/tensorml/lib/python3.11/site-packages/peft/peft_model.py:123, in PeftModel.__init__(self, model, peft_config, adapter_name)
+    121     self._peft_config = None
+    122     cls = PEFT_TYPE_TO_MODEL_MAPPING[peft_config.peft_type]
+--> 123     self.base_model = cls(model, {adapter_name: peft_config}, adapter_name)
+    124     self.set_additional_trainable_modules(peft_config, adapter_name)
+    126 self.config = getattr(self.base_model, "config", {"model_type": "custom"})
+
+File ~/mambaforge/envs/tensorml/lib/python3.11/site-packages/peft/tuners/lora/model.py:115, in LoraModel.__init__(self, model, config, adapter_name)
+    114 def __init__(self, model, config, adapter_name) -> None:
+--> 115     super().__init__(model, config, adapter_name)
+
+File ~/mambaforge/envs/tensorml/lib/python3.11/site-packages/peft/tuners/tuners_utils.py:95, in BaseTuner.__init__(self, model, peft_config, adapter_name)
+     92 if not hasattr(self, "config"):
+     93     self.config = {"model_type": "custom"}
+---> 95 self.inject_adapter(self.model, adapter_name)
+     97 # Copy the peft_config in the injected model.
+     98 self.model.peft_config = self.peft_config
+
+File ~/mambaforge/envs/tensorml/lib/python3.11/site-packages/peft/tuners/tuners_utils.py:252, in BaseTuner.inject_adapter(self, model, adapter_name)
+    245     parent, target, target_name = _get_submodules(model, key)
+    247     optional_kwargs = {
+    248         "loaded_in_8bit": getattr(model, "is_loaded_in_8bit", False),
+    249         "loaded_in_4bit": getattr(model, "is_loaded_in_4bit", False),
+    250         "current_key": key,
+    251     }
+--> 252     self._create_and_replace(peft_config, adapter_name, target, target_name, parent, **optional_kwargs)
+    254 if not is_target_modules_in_base_model:
+    255     raise ValueError(
+    256         f"Target modules {peft_config.target_modules} not found in the base model. "
+    257         f"Please check the target modules and try again."
+    258     )
+
+File ~/mambaforge/envs/tensorml/lib/python3.11/site-packages/peft/tuners/lora/model.py:196, in LoraModel._create_and_replace(self, lora_config, adapter_name, target, target_name, parent, current_key, **optional_kwargs)
+    188     target.update_layer(
+    189         adapter_name,
+    190         r,
+   (...)
+    193         lora_config.init_lora_weights,
+    194     )
+    195 else:
+--> 196     new_module = self._create_new_module(lora_config, adapter_name, target, **kwargs)
+    197     if adapter_name != self.active_adapter:
+    198         # adding an additional adapter: it is not automatically trainable
+    199         new_module.requires_grad_(False)
+
+File ~/mambaforge/envs/tensorml/lib/python3.11/site-packages/peft/tuners/lora/model.py:282, in LoraModel._create_new_module(lora_config, adapter_name, target, **kwargs)
+    278 elif loaded_in_4bit and is_bnb_4bit_available() and isinstance(target_base_layer, bnb.nn.Linear4bit):
+    279     fourbit_kwargs = kwargs.copy()
+    280     fourbit_kwargs.update(
+    281         {
+--> 282             "compute_dtype": target.compute_dtype,
+    283             "compress_statistics": target.weight.compress_statistics,
+    284             "quant_type": target.weight.quant_type,
+    285         }
+    286     )
+    287     new_module = Linear4bit(target, adapter_name, **fourbit_kwargs)
+    288 elif AutoGPTQQuantLinear is not None and isinstance(target_base_layer, AutoGPTQQuantLinear):
+
+File ~/mambaforge/envs/tensorml/lib/python3.11/site-packages/torch/nn/modules/module.py:1695, in Module.__getattr__(self, name)
+   1693     if name in modules:
+   1694         return modules[name]
+-> 1695 raise AttributeError(f"'{type(self).__name__}' object has no attribute '{name}'")
+
+AttributeError: 'Linear4bit' object has no attribute 'compute_dtype'
