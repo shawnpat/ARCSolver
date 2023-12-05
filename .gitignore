@@ -1,6 +1,9 @@
 merged_models
 adapters
 OLD
-data
 .venv
 results
+.DS_Store
+data/ARC_augmented_evaluation_puzzles.json
+data/core_ARC_puzzles.json
+data/ARC_augmented_training_puzzles.json
